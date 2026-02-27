@@ -483,6 +483,13 @@ a { color: inherit; }
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
 }
 .programs-grid .prog-card { aspect-ratio: 3/4; border-radius: var(--r); }
+/* Last card alone on its row spans full width as a landscape feature card.
+   nth-child counts the hidden <template> element as child #1, so cards start
+   at child #2. A 7th card occupies position 8 = 3n+2 (n=2). */
+.programs-grid .prog-card:last-child:nth-child(3n+2) {
+  grid-column: 1 / -1;
+  aspect-ratio: 16/6;
+}
 
 /* ── Quick Links (Home) ──────────────────────────────── */
 .quick-links { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }

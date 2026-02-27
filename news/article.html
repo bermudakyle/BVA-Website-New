@@ -2,11 +2,33 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Executives &amp; Staff — BVA</title>
-  <meta name="description" content="Meet the BVA Board of Directors and Coaching Staff — the people behind Bermuda Volleyball Association.">
+  <title id="page-title">Article — BVA News</title>
+  <meta id="page-desc" name="description" content="BVA News Article">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .article-prose { font-family: 'DM Sans', sans-serif; font-size: 1rem; line-height: 1.8; color: var(--fg2); }
+    .article-prose p  { margin: 0 0 1.4rem; }
+    .article-prose h2 { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.6rem; text-transform: uppercase; letter-spacing: .04em; color: var(--fg); margin: 2.5rem 0 .75rem; line-height: 1.15; }
+    .article-prose h3 { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 1.25rem; text-transform: uppercase; letter-spacing: .04em; color: var(--fg); margin: 2rem 0 .6rem; line-height: 1.2; }
+    .article-prose strong { font-weight: 600; color: var(--fg); }
+    .article-prose em { font-style: italic; }
+    .article-prose a  { color: var(--accent, #e63c2f); text-decoration: underline; text-underline-offset: 3px; }
+    .article-prose ul, .article-prose ol { padding-left: 1.4rem; margin: 0 0 1.4rem; }
+    .article-prose li { margin-bottom: .4rem; }
+    .article-prose blockquote { border-left: 3px solid var(--border); padding-left: 1.2rem; margin: 1.5rem 0; color: var(--fg3); font-style: italic; }
+    .article-prose img { max-width: 100%; border-radius: 8px; margin: 1.5rem 0; display: block; }
+    .article-prose hr  { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
+    .article-prose pre { background: var(--mid); border-radius: 6px; padding: 1rem 1.2rem; overflow-x: auto; margin-bottom: 1.4rem; }
+    .article-prose code { font-family: monospace; font-size: .88em; background: var(--mid); padding: .15em .4em; border-radius: 3px; }
+    .article-prose pre code { background: none; padding: 0; }
+    .article-back { display: inline-flex; align-items: center; gap: .4rem; font-size: .75rem; font-family: 'DM Sans', sans-serif; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--fg3); text-decoration: none; margin-bottom: 2.5rem; transition: color .2s; }
+    .article-back:hover { color: var(--fg); }
+    .article-back svg { flex-shrink: 0; }
+    .skeleton-line { background: var(--raised, rgba(255,255,255,.06)); border-radius: 4px; animation: shimmer 1.4s infinite; }
+    @keyframes shimmer { 0%,100%{opacity:.6} 50%{opacity:1} }
+  </style>
 </head>
 <body class="page-dark">
 
@@ -25,180 +47,42 @@
 </nav>
 <div id="mobile-menu" class="mobile-menu"><div class="mobile-menu-top"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:.06em;text-transform:uppercase;color:var(--fg)">BVA</div><button id="mobile-menu-close" class="mobile-menu-close">✕</button></div><ul class="mobile-nav-links"><li><a href="/programs.html">Programs</a></li><li class="sub-link"><a href="/programs/junior-girls.html">Paradise Hitters</a></li><li class="sub-link"><a href="/programs/junior-boys.html">Big Wave Riders</a></li><li class="sub-link"><a href="/programs/national-beach-team.html">National Beach Team</a></li><li class="sub-link"><a href="/programs/mens-national.html">Men's National Team</a></li><li class="sub-link"><a href="/programs/womens-national.html">Women's National Team</a></li><li class="sub-link"><a href="/programs/youth-camps.html">Youth Camps</a></li><li class="sub-link"><a href="/programs/coaching.html">Coaching Program</a></li><li><a href="/leagues.html">Leagues</a></li><li class="sub-link"><a href="/leagues.html#beach">Summer Beach</a></li><li class="sub-link"><a href="/leagues.html#indoor">Winter Indoor</a></li><li class="sub-link"><a href="/leagues.html#grass">Spring Grass</a></li><li class="sub-link"><a href="/standings.html">Standings</a></li><li class="sub-link"><a href="/schedules.html">Schedules</a></li><li class="sub-link"><a href="/league-rules.html">League Rules</a></li><li><a href="/news.html">News</a></li><li><a href="/events.html">Events</a></li><li><a href="/membership.html">Membership</a></li><li><a href="/about.html">About BVA</a></li><li class="sub-link"><a href="/history.html">History</a></li><li class="sub-link"><a href="/mission.html">Mission</a></li><li class="sub-link"><a href="/executives.html">Executives</a></li><li class="sub-link"><a href="/gallery.html">Gallery</a></li><li class="sub-link"><a href="/videos.html">Videos</a></li><li class="sub-link"><a href="/annual-reports.html">Annual Reports</a></li><li class="sub-link"><a href="/bursary.html">Bursary</a></li><li class="sub-link"><a href="/adopt-an-athlete.html">Adopt-an-Athlete</a></li><li class="sub-link"><a href="/ref-certification.html">Referee Certification</a></li></ul><div class="mobile-menu-cta"><a href="/membership.html">Join BVA</a></div></div>
 
-<div class="page-header">
-  <div class="page-header-bg" style="background-image:url('/assets/images/2025/03/Senior_volleyball7174.jpg')"></div>
+
+<div class="page-header" id="article-hero">
+  <div class="page-header-bg" id="article-hero-bg" style="background-image:url('/assets/images/2024/02/Mens-Beach.jpeg')"></div>
   <div class="page-header-overlay"></div>
   <div class="page-header-content">
-    <div style="font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:.4rem;">About BVA</div>
-    <h1>Executives &amp; Staff</h1>
-    <p>The people who make Bermuda volleyball happen</p>
+    <div class="sec-tag" id="article-cat" style="margin-bottom:.75rem;">News</div>
+    <h1 id="article-title-el" style="max-width:800px;">Loading…</h1>
+    <div id="article-date-el" style="margin-top:.75rem;font-size:.85rem;opacity:.75;font-family:'DM Sans',sans-serif;font-weight:400;"></div>
   </div>
 </div>
 
-<!-- BOARD OF DIRECTORS -->
-<section class="sec" style="background:var(--mid);">
-  <div class="sec-inner">
-    <div class="reveal" style="margin-bottom:2.5rem;">
-      <div class="sec-tag" style="margin-bottom:.75rem;">Leadership</div>
-      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;text-transform:uppercase;color:var(--fg);line-height:1.1;">BOARD OF DIRECTORS</h2>
+<section class="sec" style="background:var(--surface);padding-top:52px;padding-bottom:72px;">
+  <div class="sec-inner" style="max-width:760px;">
+
+    <a href="/news.html" class="article-back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Back to News
+    </a>
+
+    <div id="article-body" class="article-prose">
+      <div class="skeleton-line" style="width:95%;height:13px;margin-bottom:14px;"></div>
+      <div class="skeleton-line" style="width:88%;height:13px;margin-bottom:14px;"></div>
+      <div class="skeleton-line" style="width:92%;height:13px;margin-bottom:14px;"></div>
+      <div class="skeleton-line" style="width:75%;height:13px;margin-bottom:28px;"></div>
+      <div class="skeleton-line" style="width:40%;height:20px;margin-bottom:16px;"></div>
+      <div class="skeleton-line" style="width:95%;height:13px;margin-bottom:14px;"></div>
+      <div class="skeleton-line" style="width:89%;height:13px;margin-bottom:14px;"></div>
+      <div class="skeleton-line" style="width:82%;height:13px;margin-bottom:14px;"></div>
     </div>
 
-    <div class="exec-grid reveal" data-list="board">
-      <template>
-        <div class="exec-card">
-          <img class="exec-photo" data-field="photo" data-field-alt="name" src="" alt="">
-          <div class="exec-info">
-            <div class="exec-name" data-field="name"></div>
-            <div class="exec-role" data-field="role"></div>
-          </div>
-        </div>
-      </template>
-      <div class="exec-card">
-        <img src="/assets/images/2025/01/Amy-Chan.jpeg" alt="Amy Chan" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">Amy Chan</div>
-          <div class="exec-role">President</div>
-        </div>
-      </div>
-      <div class="exec-card">
-        <img src="/assets/images/2025/01/Lori-Gazzard.jpeg" alt="Lori Gazzard" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">Lori Gazzard</div>
-          <div class="exec-role">Vice President</div>
-        </div>
-      </div>
-      <div class="exec-card">
-        <img src="/assets/images/2025/01/Teresa.jpg" alt="Teresa" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">Teresa</div>
-          <div class="exec-role">Secretary</div>
-        </div>
-      </div>
-      <div class="exec-card">
-        <img src="/assets/images/2025/01/shari-e1673575605352.jpg" alt="Shari" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">Shari</div>
-          <div class="exec-role">Treasurer</div>
-        </div>
-      </div>
-      <div class="exec-card">
-        <img src="/assets/images/2025/01/Ryan-Headshot-e1732729006673.jpg" alt="Ryan" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">Ryan</div>
-          <div class="exec-role">Director</div>
-        </div>
-      </div>
-      <div class="exec-card">
-        <img src="/assets/images/2025/01/blackburn-collette-cropped-scaled-1.jpg" alt="Collette Blackburn" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">Collette Blackburn</div>
-          <div class="exec-role">Director</div>
-        </div>
-      </div>
-      <div class="exec-card">
-        <img src="/assets/images/2025/01/Libby-Sousa.png" alt="Libby Sousa" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">Libby Sousa</div>
-          <div class="exec-role">Director</div>
-        </div>
-      </div>
-      <div class="exec-card">
-        <img src="/assets/images/2025/01/Andrew-Soares-2.jpg" alt="Andrew Soares" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">Andrew Soares</div>
-          <div class="exec-role">Director</div>
-        </div>
-      </div>
-      <div class="exec-card">
-        <img src="/assets/images/2025/01/Kamryn-Martins-Headshot-e1732642537103.jpeg" alt="Kamryn Martins" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">Kamryn Martins</div>
-          <div class="exec-role">Director</div>
-        </div>
-      </div>
-      <div class="exec-card">
-        <img src="/assets/images/2025/01/6-Cailey-Longworth.jpg" alt="Cailey Longworth" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">Cailey Longworth</div>
-          <div class="exec-role">Director</div>
-        </div>
-      </div>
-      <div class="exec-card">
-        <img src="/assets/images/2025/11/John_Ewles.jpg" alt="John Ewles" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">John Ewles</div>
-          <div class="exec-role">Director</div>
-        </div>
-      </div>
-      <div class="exec-card">
-        <img src="/assets/images/2025/11/Tyler_Seise_headshot.jpg" alt="Tyler Seise" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">Tyler Seise</div>
-          <div class="exec-role">Director</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- COACHING STAFF -->
-<section class="sec" style="background:var(--surface);">
-  <div class="sec-inner">
-    <div class="reveal" style="margin-bottom:2.5rem;">
-      <div class="sec-tag" style="margin-bottom:.75rem;">On the Court</div>
-      <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;text-transform:uppercase;color:var(--fg);line-height:1.1;">COACHING STAFF</h2>
+    <div id="article-not-found" style="display:none;text-align:center;padding:4rem 0;color:var(--fg3);">
+      <p style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;text-transform:uppercase;">Article not found</p>
+      <p style="font-size:.85rem;margin-top:.5rem;">It may have been moved or removed.</p>
+      <a href="/news.html" class="btn-primary" style="display:inline-flex;margin-top:1.5rem;">← Back to News</a>
     </div>
 
-    <div class="exec-grid reveal" data-list="coaches">
-      <template>
-        <div class="exec-card">
-          <img class="exec-photo" data-field="photo" data-field-alt="name" src="" alt="">
-          <div class="exec-info">
-            <div class="exec-name" data-field="name"></div>
-            <div class="exec-role" data-field="role"></div>
-          </div>
-        </div>
-      </template>
-      <div class="exec-card">
-        <img src="/assets/images/2025/01/Gary.jpeg" alt="Gary LeBlanc" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">Gary LeBlanc</div>
-          <div class="exec-role">Women's Head Coach</div>
-        </div>
-      </div>
-      <div class="exec-card">
-        <img src="/assets/images/2025/01/Brandon-Sousa-Headshot-Smiles.png" alt="Brandon Sousa" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">Brandon Sousa</div>
-          <div class="exec-role">Women's Assistant Coach</div>
-        </div>
-      </div>
-      <div class="exec-card">
-        <img src="/assets/images/2025/01/MHAMILTON-resized-1-e1733174165765.jpg" alt="Mark Hamilton" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">Mark Hamilton</div>
-          <div class="exec-role">Beach Head Coach</div>
-        </div>
-      </div>
-      <div class="exec-card">
-        <img src="/assets/images/2025/01/Mike.png" alt="Mike Smith" class="exec-photo">
-        <div class="exec-info">
-          <div class="exec-name">Mike Smith</div>
-          <div class="exec-role">Men's Head Coach</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="sec" style="background:var(--deep);padding-top:56px;padding-bottom:72px;">
-  <div class="sec-inner reveal">
-    <div class="cta-banner">
-      <h2>Want to Get Involved?</h2>
-      <p>BVA is always looking for volunteers, coaches, and community members to help grow volleyball in Bermuda. Reach out to join our team.</p>
-      <a href="mailto:bermudavolleyball@gmail.com" class="btn-primary">Contact Us <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
   </div>
 </section>
 
@@ -212,7 +96,89 @@
   </div>
   <div class="footer-bottom"><p>© 2026 Bermuda Volleyball Association. <span>Registered Charity #646.</span></p><p>Affiliated with <span>ECVA · NORCECA · FIVB</span></p></div>
 </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@9/marked.min.js"></script>
 <script src="/assets/js/main.js"></script>
-<script src="/assets/js/cms-loader.js"></script>
-<script>loadPageContent('executives');</script>
-</body></html>
+<script>
+(async function () {
+
+  /* ── Tiny frontmatter parser (no deps) ── */
+  function parseFrontmatter(text) {
+    const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+    if (!match) return { data: {}, content: text };
+    const data = {};
+    match[1].split(/\r?\n/).forEach(line => {
+      const colon = line.indexOf(':');
+      if (colon < 1) return;
+      const key = line.slice(0, colon).trim();
+      let val = line.slice(colon + 1).trim();
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) val = val.slice(1, -1);
+      if (val === 'true') val = true;
+      if (val === 'false') val = false;
+      data[key] = val;
+    });
+    return { data, content: match[2].trim() };
+  }
+
+  function fmtDate(d) {
+    if (!d) return '';
+    try { return new Date(String(d) + 'T12:00:00').toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }); }
+    catch { return String(d); }
+  }
+
+  function showNotFound() {
+    document.getElementById('article-body').style.display = 'none';
+    document.getElementById('article-not-found').style.display = 'block';
+    document.getElementById('article-title-el').textContent = 'Article Not Found';
+    document.getElementById('article-date-el').textContent = '';
+  }
+
+  /* ── Read slug from URL ── */
+  const slug = new URLSearchParams(window.location.search).get('slug');
+  if (!slug) { showNotFound(); return; }
+
+  /* ── Fetch the markdown file ── */
+  let raw;
+  try {
+    const res = await fetch('/content/news/' + encodeURIComponent(slug) + '.md');
+    if (!res.ok) { showNotFound(); return; }
+    raw = await res.text();
+  } catch {
+    showNotFound();
+    return;
+  }
+
+  const { data, content } = parseFrontmatter(raw);
+
+  /* ── Update hero ── */
+  const FALLBACK_IMG = '/assets/images/2024/02/Mens-Beach.jpeg';
+  const heroBg = document.getElementById('article-hero-bg');
+  if (heroBg && data.image) heroBg.style.backgroundImage = `url('${data.image}')`;
+
+  const catEl = document.getElementById('article-cat');
+  if (catEl) catEl.textContent = data.category || 'News';
+
+  const titleEl = document.getElementById('article-title-el');
+  if (titleEl) titleEl.textContent = data.title || 'Article';
+
+  const dateEl = document.getElementById('article-date-el');
+  if (dateEl) dateEl.textContent = fmtDate(data.date);
+
+  /* ── Update page meta ── */
+  document.getElementById('page-title').textContent = (data.title || 'Article') + ' — BVA News';
+  const descEl = document.getElementById('page-desc');
+  if (descEl && data.excerpt) descEl.setAttribute('content', data.excerpt);
+
+  /* ── Render markdown body ── */
+  const bodyEl = document.getElementById('article-body');
+  if (bodyEl && content) {
+    marked.setOptions({ breaks: true, gfm: true });
+    bodyEl.innerHTML = marked.parse(content);
+  } else if (bodyEl) {
+    bodyEl.innerHTML = '<p style="color:var(--fg3)">No content available for this article.</p>';
+  }
+
+})();
+</script>
+</body>
+</html>

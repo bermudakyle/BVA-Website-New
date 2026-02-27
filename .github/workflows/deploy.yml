@@ -29,6 +29,19 @@ jobs:
             console.log('Generated content/news/index.json with', files.length, 'articles:', files);
           "
 
+      - name: Generate league data manifest
+        run: |
+          node -e "
+            const fs = require('fs');
+            const dir = 'content/league-data';
+            if (!fs.existsSync(dir)) { console.log('No league-data dir, skipping'); process.exit(0); }
+            const files = fs.readdirSync(dir)
+              .filter(f => f.endsWith('.json') && f !== 'index.json')
+              .sort();
+            fs.writeFileSync(dir + '/index.json', JSON.stringify(files, null, 2));
+            console.log('Generated content/league-data/index.json with', files.length, 'files');
+          "
+
       # Deploy everything to SiteGround via FTP.
       # Files excluded: .git, node_modules, dev-only files, and local screenshots.
       - name: Deploy via FTP to SiteGround

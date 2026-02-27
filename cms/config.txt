@@ -413,3 +413,46 @@ collections:
             fields:
               - {label: Label, name: label, widget: string}
               - {label: Value, name: value, widget: string}
+
+  # ── League Match Nights ────────────────────────────────────────────────────────
+  - name: league-data
+    label: League Match Nights
+    label_singular: Match Night
+    folder: content/league-data
+    create: true
+    delete: true
+    extension: json
+    format: json
+    slug: "{{fields.league}}-{{year}}-{{month}}-{{day}}"
+    sortable_fields: [date, league]
+    fields:
+      - label: League
+        name: league
+        widget: select
+        options:
+          - { label: "Summer Beach League", value: "beach" }
+          - { label: "Winter Indoor League", value: "indoor" }
+          - { label: "Grass League",         value: "grass" }
+      - label: Date
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "MMMM D, YYYY"
+        time_format: false
+      - label: Rungs
+        name: rungs
+        widget: list
+        hint: "Add one entry per Rung played this night (e.g. Rung 1, Rung 2)."
+        fields:
+          - { label: "Rung Name", name: name, widget: string, hint: "e.g. Rung 1" }
+          - label: Matches
+            name: matches
+            widget: list
+            hint: "Add each match played in this Rung."
+            fields:
+              - { label: "Team 1", name: team1, widget: string }
+              - { label: "Team 2", name: team2, widget: string }
+              - { label: "Team 1 Sets Won", name: team1Sets, widget: number, value_type: int, min: 0 }
+              - { label: "Team 2 Sets Won", name: team2Sets, widget: number, value_type: int, min: 0 }
+              - { label: "Team 1 Total Points", name: team1Points, widget: number, value_type: int, min: 0 }
+              - { label: "Team 2 Total Points", name: team2Points, widget: number, value_type: int, min: 0 }

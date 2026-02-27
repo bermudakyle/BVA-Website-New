@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>League Standings — BVA</title>
+  <meta name="description" content="Current Bermuda Volleyball Association league standings — Summer Beach, Winter Indoor, and Grass leagues.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    /* ── League Tabs ──────────────────────────────────────────────── */
+    .league-tabs {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .league-tab {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: .55rem 1.5rem;
+      border-radius: 100px;
+      border: 1.5px solid var(--border);
+      background: var(--raised);
+      color: var(--fg2);
+      cursor: pointer;
+      transition: background .18s, color .18s, border-color .18s;
+    }
+    .league-tab:hover {
+      border-color: var(--teal);
+      color: var(--fg);
+    }
+    .league-tab.active {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+
+    /* ── Rung Panel ───────────────────────────────────────────────── */
+    .rung-panel { display: none; }
+    .rung-panel.active { display: block; }
+
+    .rung-block {
+      margin-bottom: 2.5rem;
+    }
+    .rung-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--fg);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .rung-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Standings Table ──────────────────────────────────────────── */
+    .standings-table-wrap {
+      overflow-x: auto;
+      border-radius: var(--r);
+      border: 1px solid var(--border);
+    }
+    .standings-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .88rem;
+      min-width: 480px;
+    }
+    .standings-table thead th {
+      background: var(--raised);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--fg2);
+      padding: .65rem 1rem;
+      text-align: left;
+      white-space: nowrap;
+      border-bottom: 1px solid var(--border);
+    }
+    .standings-table thead th:not(:first-child):not(:nth-child(2)) {
+      text-align: center;
+    }
+    .standings-table tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background .14s;
+    }
+    .standings-table tbody tr:last-child { border-bottom: none; }
+    .standings-table tbody tr:hover { background: var(--raised); }
+    .standings-table td {
+      padding: .7rem 1rem;
+      color: var(--fg);
+    }
+    .standings-table td:not(:first-child):not(:nth-child(2)) {
+      text-align: center;
+      color: var(--fg2);
+      font-variant-numeric: tabular-nums;
+    }
+    .standings-table td.stat-wins {
+      color: var(--fg);
+      font-weight: 600;
+    }
+    .standings-table td.stat-diff.positive { color: #34d399; }
+    .standings-table td.stat-diff.negative { color: #f87171; }
+
+    /* Pos cell */
+    .standings-table .pos-cell {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--fg2);
+      width: 36px;
+      text-align: center;
+    }
+
+    /* Promotion / Relegation row highlights */
+    .standings-table tbody tr.promotion td { background: rgba(52, 211, 153, .07); }
+    .standings-table tbody tr.relegation td { background: rgba(248, 113, 113, .07); }
+    .standings-table tbody tr.promotion td.pos-cell { color: #34d399; }
+    .standings-table tbody tr.relegation td.pos-cell { color: #f87171; }
+
+    /* Zone legend */
+    .zone-legend {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      font-size: .78rem;
+      color: var(--fg2);
+    }
+    .zone-legend span { display: flex; align-items: center; gap: .4rem; }
+    .zone-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .zone-dot.promo { background: #34d399; }
+    .zone-dot.relg  { background: #f87171; }
+
+    /* ── Empty / Loading states ───────────────────────────────────── */
+    .standings-loading {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      pointer-events: none;
+    }
+    .skel {
+      background: linear-gradient(90deg, var(--raised) 25%, var(--surface) 50%, var(--raised) 75%);
+      background-size: 200% 100%;
+      animation: skel-shine 1.4s infinite;
+      border-radius: 6px;
+    }
+    @keyframes skel-shine {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .standings-empty {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--fg2);
+    }
+    .standings-empty .empty-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: .6;
+    }
+    .standings-empty h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--fg);
+      margin: 0 0 .5rem;
+    }
+    .standings-empty p { font-size: .88rem; margin: 0; }
+  </style>
+</head>
+<body class="page-dark">
+
+<nav id="nav">
+  <a href="/index.html" class="nav-brand"><img src="/assets/images/bva-logo.jpg" alt="BVA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="nav-brand-fallback" style="display:none">BVA</div><div><div class="nav-brand-name">BVA</div><div class="nav-brand-sub">Bermuda Volleyball</div></div></a>
+  <ul class="nav-links">
+    <li class="has-dropdown"><a href="/programs.html">Programs <span class="drop-arrow">▾</span></a><ul class="dropdown"><li><a href="/programs/junior-girls.html">Paradise Hitters (Girls)</a></li><li><a href="/programs/junior-boys.html">Big Wave Riders (Boys)</a></li><li><a href="/programs/national-beach-team.html">National Beach Team</a></li><li><a href="/programs/mens-national.html">Men's National Team</a></li><li><a href="/programs/womens-national.html">Women's National Team</a></li><li><a href="/programs/youth-camps.html">Youth Camps</a></li><li><a href="/programs/coaching.html">Coaching Program</a></li></ul></li>
+    <li class="has-dropdown"><a href="/leagues.html">Leagues <span class="drop-arrow">▾</span></a><ul class="dropdown"><li><a href="/leagues.html#beach">Summer Beach League</a></li><li><a href="/leagues.html#indoor">Winter Indoor League</a></li><li><a href="/leagues.html#grass">Spring Grass League</a></li><li><a href="/standings.html">Standings</a></li><li><a href="/schedules.html">Schedules</a></li><li><a href="/league-rules.html">League Rules</a></li></ul></li>
+    <li><a href="/news.html">News</a></li>
+    <li><a href="/events.html">Events</a></li>
+    <li><a href="/membership.html">Membership</a></li>
+    <li class="has-dropdown"><a href="/about.html">About <span class="drop-arrow">▾</span></a><ul class="dropdown"><li><a href="/about.html">About BVA</a></li><li><a href="/history.html">History</a></li><li><a href="/mission.html">Mission</a></li><li><a href="/executives.html">Executives</a></li><li><a href="/gallery.html">Gallery</a></li><li><a href="/videos.html">Videos</a></li><li><a href="/annual-reports.html">Annual Reports</a></li><li><a href="/bursary.html">Bursary</a></li><li><a href="/adopt-an-athlete.html">Adopt-an-Athlete</a></li><li><a href="/ref-certification.html">Referee Certification</a></li></ul></li>
+  </ul>
+  <a href="/membership.html" class="btn-nav">Join BVA</a>
+  <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="8" x2="21" y2="8"/><line x1="3" y1="16" x2="21" y2="16"/></svg></button>
+</nav>
+<div id="mobile-menu" class="mobile-menu"><div class="mobile-menu-top"><div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:.06em;text-transform:uppercase;color:var(--fg)">BVA</div><button id="mobile-menu-close" class="mobile-menu-close">✕</button></div><ul class="mobile-nav-links"><li><a href="/programs.html">Programs</a></li><li class="sub-link"><a href="/programs/junior-girls.html">Paradise Hitters</a></li><li class="sub-link"><a href="/programs/junior-boys.html">Big Wave Riders</a></li><li class="sub-link"><a href="/programs/national-beach-team.html">National Beach Team</a></li><li class="sub-link"><a href="/programs/mens-national.html">Men's National Team</a></li><li class="sub-link"><a href="/programs/womens-national.html">Women's National Team</a></li><li class="sub-link"><a href="/programs/youth-camps.html">Youth Camps</a></li><li class="sub-link"><a href="/programs/coaching.html">Coaching Program</a></li><li><a href="/leagues.html">Leagues</a></li><li class="sub-link"><a href="/leagues.html#beach">Summer Beach</a></li><li class="sub-link"><a href="/leagues.html#indoor">Winter Indoor</a></li><li class="sub-link"><a href="/leagues.html#grass">Spring Grass</a></li><li class="sub-link"><a href="/standings.html">Standings</a></li><li class="sub-link"><a href="/schedules.html">Schedules</a></li><li class="sub-link"><a href="/league-rules.html">League Rules</a></li><li><a href="/news.html">News</a></li><li><a href="/events.html">Events</a></li><li><a href="/membership.html">Membership</a></li><li><a href="/about.html">About BVA</a></li><li class="sub-link"><a href="/history.html">History</a></li><li class="sub-link"><a href="/mission.html">Mission</a></li><li class="sub-link"><a href="/executives.html">Executives</a></li><li class="sub-link"><a href="/gallery.html">Gallery</a></li><li class="sub-link"><a href="/videos.html">Videos</a></li><li class="sub-link"><a href="/annual-reports.html">Annual Reports</a></li><li class="sub-link"><a href="/bursary.html">Bursary</a></li><li class="sub-link"><a href="/adopt-an-athlete.html">Adopt-an-Athlete</a></li><li class="sub-link"><a href="/ref-certification.html">Referee Certification</a></li></ul><div class="mobile-menu-cta"><a href="/membership.html">Join BVA</a></div></div>
+
+
+<div class="page-header">
+  <div class="page-header-bg" style="background-image:url('/assets/images/2025/07/2025_Same_Sex_tournament_2.jpg')"></div>
+  <div class="page-header-overlay"></div>
+  <div class="page-header-content"><h1>League Standings</h1><p>Cumulative season standings for all BVA leagues</p></div>
+</div>
+
+<section class="sec" style="background:var(--surface);">
+  <div class="sec-inner">
+
+    <!-- League tabs -->
+    <div class="league-tabs" role="tablist">
+      <button class="league-tab active" role="tab" aria-selected="true"  data-league="beach">Summer Beach</button>
+      <button class="league-tab"        role="tab" aria-selected="false" data-league="indoor">Winter Indoor</button>
+      <button class="league-tab"        role="tab" aria-selected="false" data-league="grass">Grass League</button>
+    </div>
+
+    <!-- Standings panels (one per league) -->
+    <div id="standings-beach" class="rung-panel active" role="tabpanel"></div>
+    <div id="standings-indoor" class="rung-panel"       role="tabpanel"></div>
+    <div id="standings-grass"  class="rung-panel"       role="tabpanel"></div>
+
+    <!-- Zone key -->
+    <div class="zone-legend">
+      <span><span class="zone-dot promo"></span>Promotion zone (top 2)</span>
+      <span><span class="zone-dot relg"></span>Relegation zone (bottom 2)</span>
+    </div>
+
+    <!-- Last updated note -->
+    <p id="last-updated" style="margin-top:1.25rem;font-size:.78rem;color:var(--fg2);"></p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand"><div style="display:flex;align-items:center;gap:12px;margin-bottom:.5rem;"><img src="/assets/images/bva-logo.jpg" alt="BVA" style="height:40px;width:40px;object-fit:contain;border-radius:7px;border:1px solid rgba(255,255,255,.08);" onerror="this.style.display='none'"><div><div class="footer-brand-name">BVA</div><div class="footer-brand-sub">Bermuda Volleyball</div></div></div><p>Promoting volleyball in Bermuda for over 50 years. Registered Charity #646.</p><div class="footer-socials"><a href="https://facebook.com/bermudavolleyball" target="_blank" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="https://instagram.com/bermudavolleyball" target="_blank" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="mailto:bermudavolleyball@gmail.com" aria-label="Email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a></div></div>
+    <div class="footer-col"><h4>Programs</h4><ul class="footer-links"><li><a href="/programs/junior-girls.html">Paradise Hitters</a></li><li><a href="/programs/junior-boys.html">Big Wave Riders</a></li><li><a href="/programs/national-beach-team.html">National Beach Team</a></li><li><a href="/programs/mens-national.html">Men's National Team</a></li><li><a href="/programs/womens-national.html">Women's National Team</a></li><li><a href="/programs/youth-camps.html">Youth Camps</a></li><li><a href="/programs/coaching.html">Coaching Program</a></li></ul></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul class="footer-links"><li><a href="/leagues.html">Leagues</a></li><li><a href="/standings.html">Standings</a></li><li><a href="/schedules.html">Schedules</a></li><li><a href="/events.html">Events</a></li><li><a href="/news.html">News</a></li><li><a href="/membership.html">Membership</a></li><li><a href="/adopt-an-athlete.html">Adopt-an-Athlete</a></li><li><a href="/bursary.html">Bursary</a></li></ul></div>
+    <div class="footer-col"><h4>About</h4><ul class="footer-links"><li><a href="/about.html">About BVA</a></li><li><a href="/history.html">History</a></li><li><a href="/mission.html">Mission</a></li><li><a href="/executives.html">Executives</a></li><li><a href="/annual-reports.html">Annual Reports</a></li><li><a href="/videos.html">Videos</a></li><li><a href="/ref-certification.html">Referee Certification</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul class="footer-links"><li><a href="mailto:bermudavolleyball@gmail.com">bermudavolleyball@gmail.com</a></li><li><a href="mailto:bvamemberships@gmail.com">bvamemberships@gmail.com</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Bermuda Volleyball Association. <span>Registered Charity #646.</span></p><p>Affiliated with <span>ECVA · NORCECA · FIVB</span></p></div>
+</footer>
+
+<script src="/assets/js/main.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ── Utilities ──────────────────────────────────────────────────── */
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  /* ── Standings calculation ──────────────────────────────────────── */
+  function calculateStandings(matchNights, leagueId) {
+    // rungData: { rungName: { teamName: { played, wins, losses, pf, pa } } }
+    const rungData = {};
+
+    for (const night of matchNights) {
+      if (night.league !== leagueId) continue;
+      for (const rung of (night.rungs || [])) {
+        if (!rungData[rung.name]) rungData[rung.name] = {};
+        const r = rungData[rung.name];
+        for (const m of (rung.matches || [])) {
+          [m.team1, m.team2].forEach(t => {
+            if (!r[t]) r[t] = { played: 0, wins: 0, losses: 0, pf: 0, pa: 0 };
+          });
+          r[m.team1].played++; r[m.team2].played++;
+          r[m.team1].pf += (m.team1Points || 0); r[m.team1].pa += (m.team2Points || 0);
+          r[m.team2].pf += (m.team2Points || 0); r[m.team2].pa += (m.team1Points || 0);
+          if (m.team1Sets > m.team2Sets) {
+            r[m.team1].wins++; r[m.team2].losses++;
+          } else {
+            r[m.team2].wins++; r[m.team1].losses++;
+          }
+        }
+      }
+    }
+
+    // Sort rungs naturally (Rung 1, Rung 2, …)
+    const sortedRungs = Object.keys(rungData).sort((a, b) => {
+      const na = parseInt(a.match(/\d+/)?.[0] ?? '0');
+      const nb = parseInt(b.match(/\d+/)?.[0] ?? '0');
+      return na !== nb ? na - nb : a.localeCompare(b);
+    });
+
+    const result = {};
+    for (const rungName of sortedRungs) {
+      const teams = rungData[rungName];
+      result[rungName] = Object.entries(teams)
+        .map(([name, s]) => ({ name, ...s, diff: s.pf - s.pa }))
+        .sort((a, b) => b.wins - a.wins || b.diff - a.diff);
+    }
+    return result;
+  }
+
+  /* ── Render helpers ─────────────────────────────────────────────── */
+  function renderSkeleton() {
+    return `<div class="standings-loading">
+      ${[80,60,90,70].map(w =>
+        `<div class="skel" style="height:38px;width:${w}%"></div>`
+      ).join('')}
+    </div>`;
+  }
+
+  function renderEmpty(leagueName) {
+    return `<div class="standings-empty">
+      <div class="empty-icon">🏐</div>
+      <h3>No data yet</h3>
+      <p>Match night data for the ${esc(leagueName)} hasn't been entered yet.<br>Check back after the first night of play.</p>
+    </div>`;
+  }
+
+  function renderTable(rungName, rows) {
+    const totalRows = rows.length;
+    const rowsHtml = rows.map((row, i) => {
+      const pos = i + 1;
+      const isPromo = totalRows > 2 && pos <= 2;
+      const isRelg  = totalRows > 2 && pos > totalRows - 2;
+      const cls = isPromo ? 'promotion' : (isRelg ? 'relegation' : '');
+      const diffStr = row.diff > 0 ? `+${row.diff}` : String(row.diff);
+      const diffCls = row.diff > 0 ? 'positive' : (row.diff < 0 ? 'negative' : '');
+      return `<tr class="${cls}">
+        <td class="pos-cell">${pos}</td>
+        <td style="font-weight:600">${esc(row.name)}</td>
+        <td>${row.played}</td>
+        <td class="stat-wins">${row.wins}</td>
+        <td>${row.losses}</td>
+        <td>${row.pf}</td>
+        <td>${row.pa}</td>
+        <td class="stat-diff ${diffCls}">${diffStr}</td>
+      </tr>`;
+    }).join('');
+
+    return `<div class="rung-block">
+      <div class="rung-label">${esc(rungName)}</div>
+      <div class="standings-table-wrap">
+        <table class="standings-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Team</th>
+              <th>P</th>
+              <th>W</th>
+              <th>L</th>
+              <th>PF</th>
+              <th>PA</th>
+              <th>+/-</th>
+            </tr>
+          </thead>
+          <tbody>${rowsHtml}</tbody>
+        </table>
+      </div>
+    </div>`;
+  }
+
+  function renderLeague(panelEl, matchNights, leagueId, leagueName) {
+    const standings = calculateStandings(matchNights, leagueId);
+    const rungNames = Object.keys(standings);
+
+    if (rungNames.length === 0) {
+      panelEl.innerHTML = renderEmpty(leagueName);
+      return;
+    }
+
+    panelEl.innerHTML = rungNames.map(name => renderTable(name, standings[name])).join('');
+  }
+
+  /* ── Data loading ───────────────────────────────────────────────── */
+  const LEAGUES = [
+    { id: 'beach',  name: 'Summer Beach League' },
+    { id: 'indoor', name: 'Winter Indoor League' },
+    { id: 'grass',  name: 'Grass League' },
+  ];
+
+  // Show skeletons while loading
+  LEAGUES.forEach(({ id }) => {
+    document.getElementById('standings-' + id).innerHTML = renderSkeleton();
+  });
+
+  async function loadStandings() {
+    let files;
+    try {
+      const res = await fetch('/content/league-data/index.json');
+      if (!res.ok) throw new Error('index not found');
+      files = await res.json();
+    } catch {
+      // No manifest yet (first deploy or empty folder) — show empty states
+      LEAGUES.forEach(({ id, name }) => {
+        document.getElementById('standings-' + id).innerHTML = renderEmpty(name);
+      });
+      return;
+    }
+
+    if (!files.length) {
+      LEAGUES.forEach(({ id, name }) => {
+        document.getElementById('standings-' + id).innerHTML = renderEmpty(name);
+      });
+      return;
+    }
+
+    // Fetch all match night files in parallel
+    const matchNights = (await Promise.all(
+      files.map(async file => {
+        try {
+          const r = await fetch('/content/league-data/' + file);
+          return r.ok ? r.json() : null;
+        } catch { return null; }
+      })
+    )).filter(Boolean);
+
+    LEAGUES.forEach(({ id, name }) => {
+      renderLeague(document.getElementById('standings-' + id), matchNights, id, name);
+    });
+
+    // Show last updated date
+    const latest = files[files.length - 1];
+    const dateMatch = latest.match(/(\d{4}-\d{2}-\d{2})/);
+    if (dateMatch) {
+      const d = new Date(dateMatch[1] + 'T00:00:00');
+      document.getElementById('last-updated').textContent =
+        'Last updated: ' + d.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+    }
+  }
+
+  loadStandings();
+
+  /* ── Tab switching ──────────────────────────────────────────────── */
+  document.querySelectorAll('.league-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const leagueId = tab.dataset.league;
+      document.querySelectorAll('.league-tab').forEach(t => {
+        t.classList.toggle('active', t === tab);
+        t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+      });
+      document.querySelectorAll('.rung-panel').forEach(p => {
+        p.classList.toggle('active', p.id === 'standings-' + leagueId);
+      });
+    });
+  });
+
+  // Auto-select league based on URL hash (e.g. standings.html#indoor)
+  const hash = location.hash.replace('#', '');
+  if (hash && ['beach','indoor','grass'].includes(hash)) {
+    document.querySelector(`.league-tab[data-league="${hash}"]`)?.click();
+  }
+})();
+</script>
+</body>
+</html>
