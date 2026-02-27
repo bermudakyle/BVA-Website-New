@@ -47,7 +47,16 @@
 <section class="sec" style="background:var(--mid);">
   <div class="sec-inner">
     <div class="sec-head reveal"><div><div class="sec-tag">Plans</div><h2 class="sec-h2">CHOOSE YOUR<br>MEMBERSHIP.</h2></div></div>
-    <div class="pricing-grid">
+    <div class="pricing-grid" data-list="plans">
+      <template>
+        <div class="pricing-card reveal" data-attr-class="featuredClass">
+          <div class="pricing-badge" data-field="badge" data-attr-class="badgeClass"></div>
+          <div class="pricing-price"><span class="price-amount" data-field="price"></span></div>
+          <div class="pricing-period" data-field="period"></div>
+          <ul class="pricing-features" data-features="features"></ul>
+          <a data-attr-class="ctaClass" data-attr-href="ctaLink" data-field="ctaLabel" style="display:block;text-align:center;margin-top:auto;"></a>
+        </div>
+      </template>
 
       <div class="pricing-card reveal">
         <div class="pricing-badge">Youth</div>
@@ -115,7 +124,14 @@
 <section class="sec" style="background:var(--deep);">
   <div class="sec-inner">
     <div class="sec-head reveal"><div><div class="sec-tag">Registration</div><h2 class="sec-h2">HOW TO<br>JOIN.</h2></div></div>
-    <div class="steps-grid reveal">
+    <div class="steps-grid reveal" data-list="steps">
+      <template>
+        <div class="step-card">
+          <div class="step-num" data-field="num"></div>
+          <div class="step-title" data-field="title"></div>
+          <p class="step-desc" data-field="desc" data-html></p>
+        </div>
+      </template>
       <div class="step-card">
         <div class="step-num">01</div>
         <div class="step-title">Choose Your Plan</div>
@@ -169,4 +185,6 @@
   <div class="footer-bottom"><p>© 2026 Bermuda Volleyball Association. <span>Registered Charity #646.</span></p><p>Affiliated with <span>ECVA · NORCECA · FIVB</span></p></div>
 </footer>
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/cms-loader.js"></script>
+<script>loadPageContent('membership');</script>
 </body></html>

@@ -1,0 +1,18 @@
+{
+  "para1": "The BVA Women's National Team is one of Bermuda's most successful volleyball programs, competing at ECVA and NORCECA levels. The team earned a silver medal at the prestigious Nike International Volleyball Festival, showcasing Bermuda's talent on the international stage.",
+  "para2": "Under the leadership of Head Coach Gary LeBlanc and Assistant Coach Brandon Sousa, the team has continued to develop and improve, building on each season's experience to compete at the highest levels available to Bermuda.",
+  "para3": "The Women's National Team serves as an inspiration for all young female volleyball players in Bermuda, showing what is possible with dedication and support from BVA.",
+  "competitions": [
+    {"icon": "🥈", "name": "Nike International Volleyball Festival", "description": "Silver medallists — international women's volleyball competition"},
+    {"icon": "🏐", "name": "ECVA Championships",                     "description": "Eastern Caribbean regional championship competition"},
+    {"icon": "🌎", "name": "NORCECA",                                "description": "Continental volleyball confederation qualifying events"},
+    {"icon": "🇺🇸", "name": "US Open Championships",                 "description": "Open volleyball championships in the United States"}
+  ],
+  "facts": [
+    {"label": "Level",       "value": "National Team"},
+    {"label": "Format",      "value": "6v6 Indoor"},
+    {"label": "Head Coach",  "value": "Gary LeBlanc"},
+    {"label": "Asst. Coach", "value": "Brandon Sousa"},
+    {"label": "Federation",  "value": "ECVA / NORCECA"}
+  ]
+}

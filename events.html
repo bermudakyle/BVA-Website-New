@@ -37,7 +37,26 @@
   <div class="sec-inner">
     <div class="sec-head reveal"><div><div class="sec-tag">Schedule</div><h2 class="sec-h2">UPCOMING<br>EVENTS.</h2></div></div>
 
-    <div class="events-list">
+    <div class="events-list" data-list="events">
+      <template>
+        <div>
+          <div class="events-month" data-show-if="monthLabel">
+            <div class="events-month-label" data-field="monthLabel"></div>
+          </div>
+          <div class="event-row reveal">
+            <div class="event-date-block">
+              <div class="event-day" data-field="day"></div>
+              <div class="event-mon" data-field="month"></div>
+            </div>
+            <div class="event-body">
+              <div class="event-title" data-field="title"></div>
+              <div class="event-meta"><span class="event-tag" data-field="tag" data-attr-class="tagType" data-show-if="tag"></span> <span data-field="meta"></span></div>
+              <p class="event-desc" data-field="description"></p>
+            </div>
+            <a class="event-cta btn-outline-sm" data-attr-href="link" data-show-if="link" data-field="linkLabel"></a>
+          </div>
+        </div>
+      </template>
 
       <!-- March 2026 -->
       <div class="events-month reveal">
@@ -189,4 +208,6 @@
   <div class="footer-bottom"><p>© 2026 Bermuda Volleyball Association. <span>Registered Charity #646.</span></p><p>Affiliated with <span>ECVA · NORCECA · FIVB</span></p></div>
 </footer>
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/cms-loader.js"></script>
+<script>loadPageContent('events');</script>
 </body></html>

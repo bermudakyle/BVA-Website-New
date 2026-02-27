@@ -1,0 +1,22 @@
+{
+  "board": [
+    {"name": "Amy Chan",           "role": "President",                  "photo": "/assets/images/2025/01/Amy-Chan.jpeg"},
+    {"name": "Lori Gazzard",       "role": "Vice President",             "photo": "/assets/images/2025/01/Lori-Gazzard.jpeg"},
+    {"name": "Teresa",             "role": "Secretary",                  "photo": "/assets/images/2025/01/Teresa.jpg"},
+    {"name": "Shari",              "role": "Treasurer",                  "photo": "/assets/images/2025/01/shari-e1673575605352.jpg"},
+    {"name": "Ryan",               "role": "Director",                   "photo": "/assets/images/2025/01/Ryan-Headshot-e1732729006673.jpg"},
+    {"name": "Collette Blackburn", "role": "Director",                   "photo": "/assets/images/2025/01/blackburn-collette-cropped-scaled-1.jpg"},
+    {"name": "Libby Sousa",        "role": "Director",                   "photo": "/assets/images/2025/01/Libby-Sousa.png"},
+    {"name": "Andrew Soares",      "role": "Director",                   "photo": "/assets/images/2025/01/Andrew-Soares-2.jpg"},
+    {"name": "Kamryn Martins",     "role": "Director",                   "photo": "/assets/images/2025/01/Kamryn-Martins-Headshot-e1732642537103.jpeg"},
+    {"name": "Cailey Longworth",   "role": "Director",                   "photo": "/assets/images/2025/01/6-Cailey-Longworth.jpg"},
+    {"name": "John Ewles",         "role": "Director",                   "photo": "/assets/images/2025/11/John_Ewles.jpg"},
+    {"name": "Tyler Seise",        "role": "Director",                   "photo": "/assets/images/2025/11/Tyler_Seise_headshot.jpg"}
+  ],
+  "coaches": [
+    {"name": "Gary LeBlanc",    "role": "Women's Head Coach",       "photo": "/assets/images/2025/01/Gary.jpeg"},
+    {"name": "Brandon Sousa",   "role": "Women's Assistant Coach",  "photo": "/assets/images/2025/01/Brandon-Sousa-Headshot-Smiles.png"},
+    {"name": "Mark Hamilton",   "role": "Beach Head Coach",         "photo": "/assets/images/2025/01/MHAMILTON-resized-1-e1733174165765.jpg"},
+    {"name": "Mike Smith",      "role": "Men's Head Coach",         "photo": "/assets/images/2025/01/Mike.png"}
+  ]
+}

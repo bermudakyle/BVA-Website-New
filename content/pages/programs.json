@@ -1,0 +1,60 @@
+{
+  "programs": [
+    {
+      "link": "/programs/junior-girls.html",
+      "image": "/assets/images/2022/02/Camp-Group-Pic.jpeg",
+      "imageAlt": "Paradise Hitters",
+      "badge": "Junior Girls · Ages 12–18",
+      "title": "Paradise Hitters",
+      "description": "Girls competitive volleyball program. Year-round training 2–3x/week with league play and international competition pathways."
+    },
+    {
+      "link": "/programs/junior-boys.html",
+      "image": "/assets/images/2024/02/Mens-Beach.jpeg",
+      "imageAlt": "Big Wave Riders",
+      "badge": "Junior Boys · Ages 12–18",
+      "title": "Big Wave Riders",
+      "description": "Boys competitive volleyball program developing Bermuda's next generation of champions through structured training and competition."
+    },
+    {
+      "link": "/programs/mens-national.html",
+      "image": "/assets/images/2025/03/Senior_volleyball7174.jpg",
+      "imageAlt": "Men's National Team",
+      "badge": "National Team",
+      "title": "Men's National Team",
+      "description": "Representing Bermuda in ECVA, NORCECA, Island Games and US Open Championships."
+    },
+    {
+      "link": "/programs/womens-national.html",
+      "image": "/assets/images/2024/02/Womens-Beach.jpeg",
+      "imageAlt": "Women's National Team",
+      "badge": "National Team",
+      "title": "Women's National Team",
+      "description": "Silver medallists at the Nike International Volleyball Festival. Competing at ECVA and NORCECA level."
+    },
+    {
+      "link": "/programs/youth-camps.html",
+      "image": "/assets/images/2025/02/March_Youth_Camp.jpg",
+      "imageAlt": "Youth Camps",
+      "badge": "Camps · Ages 8–14",
+      "title": "Youth Camps",
+      "description": "March Break & Summer volleyball camps. Fun, skills, and great volleyball for young athletes."
+    },
+    {
+      "link": "/programs/national-beach-team.html",
+      "image": "/assets/images/2024/02/Mens-Beach.jpeg",
+      "imageAlt": "National Beach Team",
+      "badge": "National Team",
+      "title": "National Beach Team",
+      "description": "Senior and U19 beach programs representing Bermuda at ECVA and NORCECA international competitions."
+    },
+    {
+      "link": "/programs/coaching.html",
+      "image": "/assets/images/2025/03/Senior_volleyball7174.jpg",
+      "imageAlt": "Coaching Program",
+      "badge": "Development",
+      "title": "Coaching Program",
+      "description": "Volleyball Canada Level 1 & Level 2 coaching certifications offered each fall for aspiring coaches."
+    }
+  ]
+}

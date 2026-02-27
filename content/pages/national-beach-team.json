@@ -1,0 +1,18 @@
+{
+  "para1": "The BVA National Beach Team program develops Bermuda's top beach volleyball players for international competition. The program operates four training groups covering both senior and under-19 levels for men and women.",
+  "para2": "Beach volleyball is one of the most iconic sports in Bermuda — played on the island's famous pink sand beaches and in international arenas. The national beach program connects Bermuda's beach culture with the global game.",
+  "para3": "Selection to the national beach team requires active BVA membership, consistent participation in the Summer Beach League, and demonstrated skill at the national level.",
+  "groups": [
+    {"icon": "🏖️", "name": "Senior Men",   "description": "Elite male beach players competing at the highest senior level internationally"},
+    {"icon": "🏖️", "name": "Senior Women", "description": "Elite female beach players competing at the highest senior level internationally"},
+    {"icon": "🌊", "name": "U19 Men",       "description": "Under-19 male development program preparing the next generation of beach players"},
+    {"icon": "🌊", "name": "U19 Women",     "description": "Under-19 female development program preparing the next generation of beach players"}
+  ],
+  "facts": [
+    {"label": "Level",      "value": "National Team"},
+    {"label": "Format",     "value": "2v2 Beach"},
+    {"label": "Groups",     "value": "4 (Sr + U19)"},
+    {"label": "Head Coach", "value": "Mark Hamilton"},
+    {"label": "Federation", "value": "ECVA / NORCECA"}
+  ]
+}

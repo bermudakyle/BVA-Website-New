@@ -50,7 +50,22 @@
 <section class="sec" style="background:var(--mid);">
   <div class="sec-inner">
     <div class="sec-head reveal"><div><div class="sec-tag">Leagues</div><h2 class="sec-h2">THREE WAYS<br>TO PLAY.</h2></div></div>
-    <div class="leagues-grid">
+    <div class="leagues-grid" data-list="leagues">
+      <template>
+        <div class="league-card reveal" data-attr-id="id">
+          <div class="league-img">
+            <img data-field="image" data-field-alt="imageAlt" src="" alt="" loading="lazy">
+            <div class="league-img-overlay"></div>
+            <div class="league-type" data-field="type"></div>
+          </div>
+          <div class="league-body">
+            <div class="league-title" data-field="title"></div>
+            <div class="league-season" data-field="season"></div>
+            <p class="league-desc" data-field="description"></p>
+            <div class="league-tags" data-tags="tags"></div>
+          </div>
+        </div>
+      </template>
       <div id="beach" class="league-card reveal">
         <div class="league-img"><img src="/assets/images/2025/07/2025_Same_Sex_tournament_2.jpg" alt="Summer Beach League" loading="lazy" onerror="this.src='/assets/images/2025/03/Corporate_Tournament.jpg'"><div class="league-img-overlay"></div><div class="league-type">Beach</div></div>
         <div class="league-body">
@@ -86,7 +101,16 @@
 <section class="sec" style="background:var(--deep);">
   <div class="sec-inner">
     <div class="sec-head reveal"><div><div class="sec-tag">Tournaments</div><h2 class="sec-h2">ANNUAL<br>EVENTS.</h2></div></div>
-    <div class="tournament-grid reveal">
+    <div class="tournament-grid reveal" data-list="tournaments">
+      <template>
+        <div class="tournament-card">
+          <div class="tournament-icon" data-field="icon"></div>
+          <div>
+            <div class="tournament-title" data-field="title"></div>
+            <div class="tournament-meta"><span data-field="date"></span> · <span data-field="format"></span> · <span data-field="venue"></span></div>
+          </div>
+        </div>
+      </template>
       <div class="tournament-card">
         <div class="tournament-icon">🏖️</div>
         <div><div class="tournament-title">BVA Beach Classic</div><div class="tournament-meta"><span>July 2025</span> · Doubles · <span>Horseshoe Bay</span></div></div>
@@ -127,4 +151,6 @@
   <div class="footer-bottom"><p>© 2026 Bermuda Volleyball Association. <span>Registered Charity #646.</span></p><p>Affiliated with <span>ECVA · NORCECA · FIVB</span></p></div>
 </footer>
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/cms-loader.js"></script>
+<script>loadPageContent('leagues');</script>
 </body></html>

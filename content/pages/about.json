@@ -1,0 +1,60 @@
+{
+  "missionPara1": "The Bermuda Volleyball Association has been promoting and developing volleyball across the island for more than 40 years. As the national governing body for the sport, BVA is responsible for all forms of volleyball in Bermuda — beach, indoor, and grass.",
+  "missionPara2": "From junior development programs to international competition at the highest levels, BVA is committed to providing every Bermudian with the opportunity to play, develop, and compete in the sport of volleyball.",
+  "stats": [
+    {"num": "40+", "label": "Years Established"},
+    {"num": "3",   "label": "Leagues"},
+    {"num": "2",   "label": "National Teams"},
+    {"num": "6+",  "label": "Programs"},
+    {"num": "3",   "label": "International Federations"}
+  ],
+  "pillars": [
+    {
+      "icon": "🏐",
+      "title": "Leagues",
+      "description": "Year-round volleyball leagues — Summer Beach, Winter Indoor, and Grass — for all skill levels and ages."
+    },
+    {
+      "icon": "🇧🇲",
+      "title": "National Teams",
+      "description": "Men's and Women's National Teams representing Bermuda at ECVA, NORCECA, Island Games, and US Open Championships."
+    },
+    {
+      "icon": "📋",
+      "title": "Coaching Courses",
+      "description": "Certified coaching development programs to build the next generation of volleyball coaches in Bermuda."
+    },
+    {
+      "icon": "👧",
+      "title": "Youth Development",
+      "description": "Junior programs for ages 12–18 (Paradise Hitters and Big Wave Riders) plus youth camps for ages 8–14."
+    },
+    {
+      "icon": "🌍",
+      "title": "International Competition",
+      "description": "Pathways for Bermudian athletes to compete at regional and international levels through BVA affiliated events."
+    },
+    {
+      "icon": "🟡",
+      "title": "Referee Certification",
+      "description": "Training and certification for volleyball referees to maintain high standards of officiating across all BVA competitions."
+    }
+  ],
+  "affiliations": [
+    {
+      "abbr": "ECVA",
+      "name": "Eastern Caribbean Volleyball Association",
+      "description": "BVA's regional governing body, coordinating Caribbean volleyball competitions and development programs."
+    },
+    {
+      "abbr": "NORCECA",
+      "name": "North, Central America and Caribbean Volleyball Confederation",
+      "description": "Continental federation overseeing volleyball across North America, Central America, and the Caribbean for FIVB."
+    },
+    {
+      "abbr": "FIVB",
+      "name": "Fédération Internationale de Volleyball",
+      "description": "The international governing body of volleyball, overseeing the sport at the highest levels including the Olympic Games."
+    }
+  ]
+}

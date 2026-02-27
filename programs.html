@@ -42,7 +42,19 @@
     <div class="sec-head reveal">
       <div><div class="sec-tag">Our Programs</div><h2 class="sec-h2">FIND YOUR<br>PROGRAM.</h2></div>
     </div>
-    <div class="programs-grid">
+    <div class="programs-grid" data-list="programs">
+      <template>
+        <a class="prog-card reveal" data-attr-href="link">
+          <img data-field="image" data-field-alt="imageAlt" src="" alt="" loading="lazy">
+          <div class="prog-overlay"></div>
+          <div class="prog-arrow"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          <div class="prog-content">
+            <div class="prog-badge" data-field="badge"></div>
+            <div class="prog-title" data-field="title"></div>
+            <div class="prog-desc" data-field="description"></div>
+          </div>
+        </a>
+      </template>
       <a href="/programs/junior-girls.html" class="prog-card reveal">
         <img src="/assets/images/2022/02/Camp-Group-Pic.jpeg" alt="Paradise Hitters" loading="lazy">
         <div class="prog-overlay"></div>
@@ -139,4 +151,6 @@
   <div class="footer-bottom"><p>© 2026 Bermuda Volleyball Association. <span>Registered Charity #646.</span></p><p>Affiliated with <span>ECVA · NORCECA · FIVB</span></p></div>
 </footer>
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/cms-loader.js"></script>
+<script>loadPageContent('programs');</script>
 </body></html>

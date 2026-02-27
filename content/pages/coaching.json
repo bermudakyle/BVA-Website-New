@@ -1,0 +1,12 @@
+{
+  "para1": "BVA offers coaching certification clinics through Volleyball Canada's National Coaching Certification Program (NCCP). These clinics are typically offered each fall and are open to anyone who wishes to improve their knowledge of the game and become a certified coach.",
+  "para2": "Whether you want to coach youth volleyball, assist a league team, or develop a national-level program, BVA's coaching certification pathway gives you the skills and credentials to do it right.",
+  "para3": "BVA strongly encourages all coaches working with junior and national teams to hold at minimum a Level 1 certification.",
+  "facts": [
+    {"label": "Provider",     "value": "Volleyball Canada"},
+    {"label": "Levels",       "value": "Level 1, Level 2"},
+    {"label": "Also offered", "value": "CAP Program"},
+    {"label": "Schedule",     "value": "Each Fall"},
+    {"label": "Open to",      "value": "All members"}
+  ]
+}

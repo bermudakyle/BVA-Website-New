@@ -1,5 +1,5 @@
 ---
-title: "Bermuda Open 2025 Recap: International Teams Shine at Horseshoe Bay"
+title: 'Bermuda Open 2025 Recap: International Teams Shine at Horseshoe Bay'
 date: 2025-08-18
 category: Tournaments
 excerpt: The 2025 Bermuda Open Beach Volleyball Tournament was a resounding success, drawing 24 teams from eight countries across three days of competition at Horseshoe Bay Beach. Bermuda's own national beach team put on an impressive showing, advancing to the quarterfinals.

@@ -43,7 +43,16 @@
       <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;text-transform:uppercase;color:var(--fg);line-height:1.1;">BOARD OF DIRECTORS</h2>
     </div>
 
-    <div class="exec-grid reveal">
+    <div class="exec-grid reveal" data-list="board">
+      <template>
+        <div class="exec-card">
+          <img class="exec-photo" data-field="photo" data-field-alt="name" src="" alt="">
+          <div class="exec-info">
+            <div class="exec-name" data-field="name"></div>
+            <div class="exec-role" data-field="role"></div>
+          </div>
+        </div>
+      </template>
       <div class="exec-card">
         <img src="/assets/images/2025/01/Amy-Chan.jpeg" alt="Amy Chan" class="exec-photo">
         <div class="exec-info">
@@ -140,7 +149,16 @@
       <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;text-transform:uppercase;color:var(--fg);line-height:1.1;">COACHING STAFF</h2>
     </div>
 
-    <div class="exec-grid reveal">
+    <div class="exec-grid reveal" data-list="coaches">
+      <template>
+        <div class="exec-card">
+          <img class="exec-photo" data-field="photo" data-field-alt="name" src="" alt="">
+          <div class="exec-info">
+            <div class="exec-name" data-field="name"></div>
+            <div class="exec-role" data-field="role"></div>
+          </div>
+        </div>
+      </template>
       <div class="exec-card">
         <img src="/assets/images/2025/01/Gary.jpeg" alt="Gary LeBlanc" class="exec-photo">
         <div class="exec-info">
@@ -195,4 +213,6 @@
   <div class="footer-bottom"><p>© 2026 Bermuda Volleyball Association. <span>Registered Charity #646.</span></p><p>Affiliated with <span>ECVA · NORCECA · FIVB</span></p></div>
 </footer>
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/cms-loader.js"></script>
+<script>loadPageContent('executives');</script>
 </body></html>

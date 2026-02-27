@@ -42,8 +42,8 @@
     <div style="max-width:720px;">
       <div class="sec-tag" style="margin-bottom:.75rem;">About the Camps</div>
       <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2.2rem;text-transform:uppercase;color:var(--fg);line-height:1.1;margin-bottom:1rem;">A WEEK OF VOLLEYBALL FUN<br>THIS MARCH BREAK.</h2>
-      <p style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">BVA Youth Volleyball Camps offer an exciting and structured volleyball experience for young athletes during the March Break school holiday. Led by BVA-certified coaches, campers develop volleyball fundamentals in a fun, supportive, and high-energy environment.</p>
-      <p style="color:var(--fg2);line-height:1.75;">The camp runs for two consecutive weeks, allowing families to choose one or both sessions. Each day is packed with skill drills, games, and friendly competition designed to build confidence and love for the sport.</p>
+      <p data-field="para1" style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">BVA Youth Volleyball Camps offer an exciting and structured volleyball experience for young athletes during the March Break school holiday. Led by BVA-certified coaches, campers develop volleyball fundamentals in a fun, supportive, and high-energy environment.</p>
+      <p data-field="para2" style="color:var(--fg2);line-height:1.75;">The camp runs for two consecutive weeks, allowing families to choose one or both sessions. Each day is packed with skill drills, games, and friendly competition designed to build confidence and love for the sport.</p>
     </div>
   </div>
 </section>
@@ -121,7 +121,13 @@
   <div class="sec-inner">
     <div class="sec-head reveal"><div><div class="sec-tag">Programme</div><h2 class="sec-h2">DAILY<br>SCHEDULE.</h2></div></div>
     <div style="max-width:680px;" class="reveal">
-      <div class="schedule-list">
+      <div class="schedule-list" data-list="schedule">
+        <template>
+          <div class="schedule-item">
+            <div class="schedule-time" data-field="time"></div>
+            <div class="schedule-activity" data-field="activity"></div>
+          </div>
+        </template>
         <div class="schedule-item">
           <div class="schedule-time">8:30am</div>
           <div class="schedule-activity">Registration &amp; Welcome — Sign in, meet coaches, warm-up stretches</div>
@@ -251,4 +257,6 @@
   <div class="footer-bottom"><p>© 2026 Bermuda Volleyball Association. <span>Registered Charity #646.</span></p><p>Affiliated with <span>ECVA · NORCECA · FIVB</span></p></div>
 </footer>
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/cms-loader.js"></script>
+<script>loadPageContent('youth-camps');</script>
 </body></html>

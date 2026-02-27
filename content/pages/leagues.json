@@ -1,0 +1,64 @@
+{
+  "leagues": [
+    {
+      "id": "beach",
+      "image": "/assets/images/2025/07/2025_Same_Sex_tournament_2.jpg",
+      "imageAlt": "Summer Beach League",
+      "type": "Beach",
+      "title": "Summer Beach League",
+      "season": "May – September",
+      "description": "BVA runs beach volleyball leagues Monday through Thursday at Horseshoe Bay Beach and Elbow Beach. Recreational and competitive divisions for all skill levels.",
+      "tags": ["2v2", "4v4", "Mon–Thu", "$225–$450/team"]
+    },
+    {
+      "id": "indoor",
+      "image": "/assets/images/2025/12/Coed-indoor-1-jan.jpeg",
+      "imageAlt": "Winter Indoor League",
+      "type": "Indoor",
+      "title": "Winter Indoor League",
+      "season": "November – February",
+      "description": "Indoor volleyball leagues at CedarBridge Academy gymnasium. Competitive and recreational 6v6 play through the winter months.",
+      "tags": ["6v6", "CedarBridge Gym", "$150/team"]
+    },
+    {
+      "id": "grass",
+      "image": "/assets/images/2025/02/spring-league.jpg",
+      "imageAlt": "Spring Grass League",
+      "type": "Grass",
+      "title": "Grass League",
+      "season": "Spring & Fall",
+      "description": "Grass volleyball events held at various outdoor venues across Bermuda. A uniquely Bermudian volleyball experience.",
+      "tags": ["4v4", "6v6", "Various venues", "$75/team"]
+    }
+  ],
+  "tournaments": [
+    {
+      "icon": "🏖️",
+      "title": "BVA Beach Classic",
+      "date": "July 2025",
+      "format": "Doubles",
+      "venue": "Horseshoe Bay"
+    },
+    {
+      "icon": "🏐",
+      "title": "Indoor Championship",
+      "date": "April 2025",
+      "format": "6v6",
+      "venue": "CedarBridge Gym"
+    },
+    {
+      "icon": "🌊",
+      "title": "Bermuda Open",
+      "date": "August 2025",
+      "format": "4v4 Beach",
+      "venue": "Horseshoe Bay"
+    },
+    {
+      "icon": "🏢",
+      "title": "Annual Corporate Tournament",
+      "date": "April 2026",
+      "format": "Coed",
+      "venue": "TBD"
+    }
+  ]
+}

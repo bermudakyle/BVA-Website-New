@@ -1,0 +1,24 @@
+{
+  "para1": "The Paradise Hitters is BVA's competitive junior girls volleyball program, designed to develop talented young athletes ages 12–18 through structured year-round training and competitive play.",
+  "para2": "Training sessions are held 2–3 times per week throughout the season, focusing on technical skills, tactical development, physical conditioning, and teamwork. Players participate in league play and have pathways to national team consideration.",
+  "para3": "Our experienced coaches create a positive, competitive environment where every player is challenged to reach their full potential — both on and off the court.",
+  "includes": [
+    {"item": "2–3 training sessions per week"},
+    {"item": "BVA league play"},
+    {"item": "Technical skill development"},
+    {"item": "Fitness conditioning"},
+    {"item": "Team building activities"},
+    {"item": "National team pathway"},
+    {"item": "Certified coaching staff"},
+    {"item": "Tournament participation"}
+  ],
+  "fee": "$1,000",
+  "ageGroup": "12–18",
+  "facts": [
+    {"label": "Ages",       "value": "12–18"},
+    {"label": "Training",   "value": "2–3x / week"},
+    {"label": "Season Fee", "value": "$1,000"},
+    {"label": "Membership", "value": "Required (free)"},
+    {"label": "Format",     "value": "Indoor 6v6"}
+  ]
+}

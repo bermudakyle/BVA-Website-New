@@ -46,15 +46,22 @@
         <div class="reveal">
           <div class="sec-tag" style="margin-bottom:.75rem;">About the Team</div>
           <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;text-transform:uppercase;color:var(--fg);line-height:1.1;margin-bottom:1rem;">BERMUDA ON THE<br>WORLD STAGE.</h2>
-          <p style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">The BVA Men's National Team represents Bermuda in regional and international volleyball competitions. The team competes at the ECVA (Eastern Caribbean Volleyball Association), NORCECA, Island Games, and US Open Championships.</p>
-          <p style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">Players selected for the national team are Bermuda's most committed and talented athletes, drawn from BVA's league system. Representation on the national team requires active BVA membership, consistent league participation, and a high level of commitment to training and team responsibilities.</p>
-          <p style="color:var(--fg2);line-height:1.75;">Selection to the Men's National Team is a prestigious honor and represents the highest level of volleyball in Bermuda.</p>
+          <p data-field="para1" style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">The BVA Men's National Team represents Bermuda in regional and international volleyball competitions. The team competes at the ECVA (Eastern Caribbean Volleyball Association), NORCECA, Island Games, and US Open Championships.</p>
+          <p data-field="para2" style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">Players selected for the national team are Bermuda's most committed and talented athletes, drawn from BVA's league system. Representation on the national team requires active BVA membership, consistent league participation, and a high level of commitment to training and team responsibilities.</p>
+          <p data-field="para3" style="color:var(--fg2);line-height:1.75;">Selection to the Men's National Team is a prestigious honor and represents the highest level of volleyball in Bermuda.</p>
         </div>
 
         <!-- Competitions -->
         <div class="reveal" style="margin-top:2.5rem;">
           <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.3rem;text-transform:uppercase;color:var(--fg);margin-bottom:1rem;">Competitions</h3>
-          <div class="competitions-grid">
+          <div class="competitions-grid" data-list="competitions">
+            <template>
+              <div class="competition-card">
+                <div class="comp-flag" data-field="icon"></div>
+                <div class="comp-name" data-field="name"></div>
+                <div class="comp-desc" data-field="description"></div>
+              </div>
+            </template>
             <div class="competition-card">
               <div class="comp-flag">🏐</div>
               <div class="comp-name">ECVA Championships</div>
@@ -96,7 +103,10 @@
       <div class="program-sidebar">
         <div class="sidebar-card reveal">
           <div class="sidebar-card-title">Team Info</div>
-          <ul class="sidebar-facts">
+          <ul class="sidebar-facts" data-list="facts">
+            <template>
+              <li><span class="fact-label" data-field="label"></span><span class="fact-val" data-field="value"></span></li>
+            </template>
             <li><span class="fact-label">Level</span><span class="fact-val">National Team</span></li>
             <li><span class="fact-label">Format</span><span class="fact-val">6v6 Indoor</span></li>
             <li><span class="fact-label">Federation</span><span class="fact-val">ECVA / NORCECA</span></li>
@@ -147,4 +157,6 @@
   <div class="footer-bottom"><p>© 2026 Bermuda Volleyball Association. <span>Registered Charity #646.</span></p><p>Affiliated with <span>ECVA · NORCECA · FIVB</span></p></div>
 </footer>
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/cms-loader.js"></script>
+<script>loadPageContent('mens-national');</script>
 </body></html>

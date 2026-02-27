@@ -1,0 +1,90 @@
+{
+  "plans": [
+    {
+      "badge": "Youth",
+      "price": "FREE",
+      "period": "Under 18 · Annual",
+      "features": [
+        "Access to all junior programs",
+        "League play eligibility",
+        "BVA events and tournaments",
+        "National team consideration",
+        "Youth camp discounts"
+      ],
+      "ctaLink": "mailto:bvamemberships@gmail.com",
+      "ctaLabel": "Register Free",
+      "ctaClass": "btn-outline"
+    },
+    {
+      "badge": "Most Popular",
+      "featuredClass": "pricing-featured",
+      "badgeClass": "featured-badge",
+      "price": "$50",
+      "period": "Adult · Annual",
+      "features": [
+        "All BVA league eligibility",
+        "Recreational & competitive divisions",
+        "Tournament entry discounts",
+        "BVA social events",
+        "Voting rights at AGM",
+        "Member newsletter"
+      ],
+      "ctaLink": "mailto:bvamemberships@gmail.com",
+      "ctaLabel": "Join Now",
+      "ctaClass": "btn-primary"
+    },
+    {
+      "badge": "Family",
+      "price": "$80",
+      "period": "2 Adults + Kids · Annual",
+      "features": [
+        "2 adult memberships included",
+        "All youth in household free",
+        "All league eligibility",
+        "Tournament discounts",
+        "Priority camp registration",
+        "BVA social events"
+      ],
+      "ctaLink": "mailto:bvamemberships@gmail.com",
+      "ctaLabel": "Join Now",
+      "ctaClass": "btn-outline"
+    },
+    {
+      "badge": "Associate",
+      "price": "$25",
+      "period": "Non-Playing · Annual",
+      "features": [
+        "Support BVA's mission",
+        "Attend all BVA events",
+        "Member newsletter",
+        "Voting rights at AGM",
+        "Recognition in BVA materials"
+      ],
+      "ctaLink": "mailto:bvamemberships@gmail.com",
+      "ctaLabel": "Become a Supporter",
+      "ctaClass": "btn-outline"
+    }
+  ],
+  "steps": [
+    {
+      "num": "01",
+      "title": "Choose Your Plan",
+      "desc": "Select the membership type that best fits you — Youth (free), Adult, Family, or Associate."
+    },
+    {
+      "num": "02",
+      "title": "Email BVA",
+      "desc": "Send your name, date of birth, and chosen membership plan to <a href=\"mailto:bvamemberships@gmail.com\" style=\"color:var(--teal)\">bvamemberships@gmail.com</a>."
+    },
+    {
+      "num": "03",
+      "title": "Complete Payment",
+      "desc": "BVA will send you payment instructions. Youth memberships require no payment — just registration confirmation."
+    },
+    {
+      "num": "04",
+      "title": "Start Playing",
+      "desc": "Once confirmed, you're ready to register for leagues, programs, and BVA events throughout the year."
+    }
+  ]
+}

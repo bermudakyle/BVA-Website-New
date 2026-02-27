@@ -46,14 +46,17 @@
         <div class="reveal">
           <div class="sec-tag" style="margin-bottom:.75rem;">About the Program</div>
           <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;text-transform:uppercase;color:var(--fg);line-height:1.1;margin-bottom:1rem;">DEVELOPING BERMUDA'S<br>NEXT GENERATION.</h2>
-          <p style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">The Paradise Hitters is BVA's competitive junior girls volleyball program, designed to develop talented young athletes ages 12–18 through structured year-round training and competitive play.</p>
-          <p style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">Training sessions are held 2–3 times per week throughout the season, focusing on technical skills, tactical development, physical conditioning, and teamwork. Players participate in league play and have pathways to national team consideration.</p>
-          <p style="color:var(--fg2);line-height:1.75;">Our experienced coaches create a positive, competitive environment where every player is challenged to reach their full potential — both on and off the court.</p>
+          <p data-field="para1" style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">The Paradise Hitters is BVA's competitive junior girls volleyball program, designed to develop talented young athletes ages 12–18 through structured year-round training and competitive play.</p>
+          <p data-field="para2" style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">Training sessions are held 2–3 times per week throughout the season, focusing on technical skills, tactical development, physical conditioning, and teamwork. Players participate in league play and have pathways to national team consideration.</p>
+          <p data-field="para3" style="color:var(--fg2);line-height:1.75;">Our experienced coaches create a positive, competitive environment where every player is challenged to reach their full potential — both on and off the court.</p>
         </div>
 
         <div class="reveal" style="margin-top:2.5rem;">
           <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.3rem;text-transform:uppercase;color:var(--fg);margin-bottom:1rem;">What's Included</h3>
-          <div class="included-grid">
+          <div class="included-grid" data-list="includes">
+            <template>
+              <div class="included-item"><span style="color:var(--teal)">✓</span> <span data-field="item"></span></div>
+            </template>
             <div class="included-item"><span style="color:var(--teal)">✓</span> 2–3 training sessions per week</div>
             <div class="included-item"><span style="color:var(--teal)">✓</span> BVA league play</div>
             <div class="included-item"><span style="color:var(--teal)">✓</span> Technical skill development</div>
@@ -71,12 +74,12 @@
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
               <div>
                 <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--fg3);margin-bottom:.2rem;">Season Fee</div>
-                <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.3rem;color:var(--fg);">$1,000</div>
+                <div data-field="fee" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.3rem;color:var(--fg);">$1,000</div>
                 <div style="font-size:.75rem;color:var(--fg2);">3 installment options available</div>
               </div>
               <div>
                 <div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--fg3);margin-bottom:.2rem;">Age Group</div>
-                <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.3rem;color:var(--fg);">12–18</div>
+                <div data-field="ageGroup" style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.3rem;color:var(--fg);">12–18</div>
                 <div style="font-size:.75rem;color:var(--fg2);">Junior Girls</div>
               </div>
             </div>
@@ -89,7 +92,10 @@
       <div class="program-sidebar">
         <div class="sidebar-card reveal">
           <div class="sidebar-card-title">Quick Facts</div>
-          <ul class="sidebar-facts">
+          <ul class="sidebar-facts" data-list="facts">
+            <template>
+              <li><span class="fact-label" data-field="label"></span><span class="fact-val" data-field="value"></span></li>
+            </template>
             <li><span class="fact-label">Ages</span><span class="fact-val">12–18</span></li>
             <li><span class="fact-label">Training</span><span class="fact-val">2–3x / week</span></li>
             <li><span class="fact-label">Season Fee</span><span class="fact-val">$1,000</span></li>
@@ -141,4 +147,6 @@
   <div class="footer-bottom"><p>© 2026 Bermuda Volleyball Association. <span>Registered Charity #646.</span></p><p>Affiliated with <span>ECVA · NORCECA · FIVB</span></p></div>
 </footer>
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/cms-loader.js"></script>
+<script>loadPageContent('junior-girls');</script>
 </body></html>

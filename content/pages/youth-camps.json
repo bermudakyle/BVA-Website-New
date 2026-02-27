@@ -1,0 +1,14 @@
+{
+  "para1": "BVA Youth Volleyball Camps offer an exciting and structured volleyball experience for young athletes during the March Break school holiday. Led by BVA-certified coaches, campers develop volleyball fundamentals in a fun, supportive, and high-energy environment.",
+  "para2": "The camp runs for two consecutive weeks, allowing families to choose one or both sessions. Each day is packed with skill drills, games, and friendly competition designed to build confidence and love for the sport.",
+  "schedule": [
+    {"time": "8:30am",  "activity": "Registration & Welcome — Sign in, meet coaches, warm-up stretches"},
+    {"time": "9:00am",  "activity": "Morning Skill Session — Serving, passing, and setting fundamentals"},
+    {"time": "10:30am", "activity": "Skill Drills & Stations — Rotational stations focusing on different skills"},
+    {"time": "12:00pm", "activity": "Lunch Break — 60-minute break (campers bring own lunch)"},
+    {"time": "1:00pm",  "activity": "Afternoon Skill Session — Spiking, blocking, and defensive techniques"},
+    {"time": "2:00pm",  "activity": "Scrimmage Games — Friendly matches and team play"},
+    {"time": "3:00pm",  "activity": "Cool Down & Review — Stretching, team debrief, and daily highlights"},
+    {"time": "3:30pm",  "activity": "End of Day — Pick-up time"}
+  ]
+}

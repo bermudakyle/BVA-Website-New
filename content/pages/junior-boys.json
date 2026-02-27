@@ -1,0 +1,24 @@
+{
+  "para1": "The Big Wave Riders is BVA's competitive junior boys volleyball program, developing Bermuda's next generation of champions through structured training and competitive play for athletes ages 12–18.",
+  "para2": "Training is held 2–3 times per week, with a focus on technical fundamentals, athletic development, and competitive volleyball IQ. Our coaches identify the most talented athletes for national team consideration.",
+  "para3": "The Big Wave Riders program is built on the belief that world-class volleyball can be developed right here in Bermuda — and that starts with investing in our juniors.",
+  "includes": [
+    {"item": "2–3 training sessions per week"},
+    {"item": "BVA league play"},
+    {"item": "Technical skill development"},
+    {"item": "Athletic conditioning"},
+    {"item": "Tactical volleyball training"},
+    {"item": "National team pathway"},
+    {"item": "BVA certified coaches"},
+    {"item": "Tournament competition"}
+  ],
+  "fee": "$1,000",
+  "ageGroup": "12–18",
+  "facts": [
+    {"label": "Ages",       "value": "12–18"},
+    {"label": "Training",   "value": "2–3x / week"},
+    {"label": "Season Fee", "value": "$1,000"},
+    {"label": "Membership", "value": "Required (free)"},
+    {"label": "Format",     "value": "Indoor 6v6"}
+  ]
+}

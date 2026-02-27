@@ -1,0 +1,17 @@
+{
+  "para1": "The BVA Men's National Team represents Bermuda in regional and international volleyball competitions. The team competes at the ECVA (Eastern Caribbean Volleyball Association), NORCECA, Island Games, and US Open Championships.",
+  "para2": "Players selected for the national team are Bermuda's most committed and talented athletes, drawn from BVA's league system. Representation on the national team requires active BVA membership, consistent league participation, and a high level of commitment to training and team responsibilities.",
+  "para3": "Selection to the Men's National Team is a prestigious honor and represents the highest level of volleyball in Bermuda.",
+  "competitions": [
+    {"icon": "🏐", "name": "ECVA Championships",     "description": "Eastern Caribbean Volleyball Association regional championship"},
+    {"icon": "🌎", "name": "NORCECA",                "description": "Continental volleyball confederation qualifying events"},
+    {"icon": "🏝️", "name": "Island Games",            "description": "Multi-sport competition for island territories worldwide"},
+    {"icon": "🇺🇸", "name": "US Open Championships", "description": "Open volleyball championships in the United States"}
+  ],
+  "facts": [
+    {"label": "Level",      "value": "National Team"},
+    {"label": "Format",     "value": "6v6 Indoor"},
+    {"label": "Federation", "value": "ECVA / NORCECA"},
+    {"label": "Membership", "value": "Required"}
+  ]
+}

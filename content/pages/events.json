@@ -1,0 +1,88 @@
+{
+  "events": [
+    {
+      "monthLabel": "March 2026",
+      "day": "24",
+      "month": "Mar",
+      "title": "Youth Camp — March Break Week 1",
+      "tag": "Youth",
+      "tagType": "camp",
+      "meta": "Warwick Academy Gymnasium · 8:30am–3:30pm",
+      "description": "Ages 8–14. Week 1 of the March Break volleyball camp. Skills, drills, and fun in a supportive environment. $300/week.",
+      "link": "/programs/youth-camps.html",
+      "linkLabel": "Register"
+    },
+    {
+      "monthLabel": "",
+      "day": "31",
+      "month": "Mar",
+      "title": "Youth Camp — March Break Week 2",
+      "tag": "Youth",
+      "tagType": "camp",
+      "meta": "Warwick Academy Gymnasium · 8:30am–3:30pm",
+      "description": "Ages 8–14. Week 2 of the March Break volleyball camp. Continue building skills with BVA certified coaches. $300/week.",
+      "link": "/programs/youth-camps.html",
+      "linkLabel": "Register"
+    },
+    {
+      "monthLabel": "April 2026",
+      "day": "TBA",
+      "month": "Apr",
+      "title": "Annual Corporate Volleyball Tournament",
+      "tag": "Tournament",
+      "tagType": "tournament",
+      "meta": "Venue TBD · Coed Format",
+      "description": "BVA's annual corporate tournament brings together Bermuda's business community for a fun day of volleyball competition. All skill levels welcome. Great networking and team-building opportunity.",
+      "link": "/membership.html",
+      "linkLabel": "Details"
+    },
+    {
+      "monthLabel": "May 2026",
+      "day": "5",
+      "month": "May",
+      "title": "Summer Beach League — Season Opens",
+      "tag": "League",
+      "tagType": "league",
+      "meta": "Horseshoe Bay Beach & Elbow Beach · Mon–Thu",
+      "description": "The 2026 Summer Beach League season kicks off. Monday through Thursday play at two iconic Bermuda beach locations. 2v2 and 4v4 divisions for recreational and competitive teams.",
+      "link": "https://tms.ezfacility.com",
+      "linkLabel": "Register"
+    },
+    {
+      "monthLabel": "July 2026",
+      "day": "TBA",
+      "month": "Jul",
+      "title": "BVA Beach Classic",
+      "tag": "Tournament",
+      "tagType": "tournament",
+      "meta": "Horseshoe Bay Beach · Doubles",
+      "description": "BVA's premier beach volleyball tournament at the world-famous Horseshoe Bay. Doubles format featuring Bermuda's top beach volleyball talent. Spectators welcome.",
+      "link": "/leagues.html",
+      "linkLabel": "Learn More"
+    },
+    {
+      "monthLabel": "August 2026",
+      "day": "TBA",
+      "month": "Aug",
+      "title": "Bermuda Open",
+      "tag": "Tournament",
+      "tagType": "tournament",
+      "meta": "Horseshoe Bay Beach · 4v4 Beach",
+      "description": "The Bermuda Open welcomes teams from across the Caribbean and North America to compete at one of the world's most beautiful volleyball venues. 4v4 beach format, international competitors.",
+      "link": "/leagues.html",
+      "linkLabel": "Learn More"
+    },
+    {
+      "monthLabel": "November 2026",
+      "day": "TBA",
+      "month": "Nov",
+      "title": "Winter Indoor League — Season Opens",
+      "tag": "League",
+      "tagType": "league",
+      "meta": "CedarBridge Academy Gymnasium · 6v6",
+      "description": "The Winter Indoor League season begins at CedarBridge Academy. Competitive and recreational 6v6 divisions. Keep your volleyball fitness through the winter months. $150/team.",
+      "link": "/leagues.html",
+      "linkLabel": "View Leagues"
+    }
+  ]
+}

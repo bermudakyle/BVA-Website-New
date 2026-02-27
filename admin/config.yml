@@ -67,7 +67,7 @@ collections:
         name: image
         widget: image
         required: false
-        allow_multiple: false
+        multiple: false
         hint: "Main image for this article. Displayed on the news card and at the top of the article."
 
       - label: Featured Article
@@ -122,3 +122,294 @@ collections:
                   - { label: "Quick Links",     value: "quick-links" }
                   - { label: "Programs Mosaic", value: "programs" }
                   - { label: "News + Events",   value: "news-events" }
+
+  # ── Site Pages ────────────────────────────────────────────────────────────────
+  - name: pages
+    label: Site Pages
+    files:
+
+      - label: Events
+        name: events
+        file: content/pages/events.json
+        fields:
+          - label: Events
+            name: events
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Month Label (e.g. March — leave blank for non-first event of month)", name: monthLabel, widget: string, required: false}
+              - {label: Day Number, name: day, widget: string}
+              - {label: Month Abbreviation, name: month, widget: string}
+              - {label: Title, name: title, widget: string}
+              - {label: Tag Label, name: tag, widget: string}
+              - {label: "Tag Type (camp / tournament / league)", name: tagType, widget: string, required: false}
+              - {label: "Meta (e.g. time & location)", name: meta, widget: string}
+              - {label: Description, name: description, widget: text}
+              - {label: Link URL, name: link, widget: string, required: false}
+              - {label: Link Label, name: linkLabel, widget: string, required: false}
+
+      - label: Executives
+        name: executives
+        file: content/pages/executives.json
+        fields:
+          - label: Board of Directors
+            name: board
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Role, name: role, widget: string}
+              - {label: Photo, name: photo, widget: image, required: false}
+          - label: Coaching Staff
+            name: coaches
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - {label: Name, name: name, widget: string}
+              - {label: Role, name: role, widget: string}
+              - {label: Photo, name: photo, widget: image, required: false}
+
+      - label: Leagues
+        name: leagues
+        file: content/pages/leagues.json
+        fields:
+          - label: Leagues
+            name: leagues
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "ID (anchor, e.g. beach / indoor / grass)", name: id, widget: string}
+              - {label: Image, name: image, widget: image, required: false}
+              - {label: Image Alt Text, name: imageAlt, widget: string}
+              - {label: Type Label, name: type, widget: string}
+              - {label: Title, name: title, widget: string}
+              - {label: Season, name: season, widget: string}
+              - {label: Description, name: description, widget: text}
+              - {label: Tags, name: tags, widget: list}
+          - label: Tournaments
+            name: tournaments
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - {label: Icon (emoji), name: icon, widget: string}
+              - {label: Title, name: title, widget: string}
+              - {label: Date, name: date, widget: string}
+              - {label: Format, name: format, widget: string}
+              - {label: Venue, name: venue, widget: string}
+
+      - label: Membership
+        name: membership
+        file: content/pages/membership.json
+        fields:
+          - label: Pricing Plans
+            name: plans
+            widget: list
+            summary: "{{fields.badge}}"
+            fields:
+              - {label: Badge Label, name: badge, widget: string}
+              - {label: "Featured Class (pricing-featured or leave blank)", name: featuredClass, widget: string, required: false}
+              - {label: "Badge Class (featured-badge or leave blank)", name: badgeClass, widget: string, required: false}
+              - {label: Price, name: price, widget: string}
+              - {label: Period, name: period, widget: string}
+              - {label: Features, name: features, widget: list}
+              - {label: CTA Link, name: ctaLink, widget: string}
+              - {label: CTA Label, name: ctaLabel, widget: string}
+              - {label: "CTA CSS Class (btn-primary / btn-outline)", name: ctaClass, widget: string}
+          - label: Registration Steps
+            name: steps
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - {label: Step Number, name: num, widget: string}
+              - {label: Title, name: title, widget: string}
+              - {label: Description, name: desc, widget: text}
+
+      - label: About BVA
+        name: about
+        file: content/pages/about.json
+        fields:
+          - {label: Mission Paragraph 1, name: missionPara1, widget: text}
+          - {label: Mission Paragraph 2, name: missionPara2, widget: text}
+          - label: Stats Bar
+            name: stats
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - {label: Number, name: num, widget: string}
+              - {label: Label, name: label, widget: string}
+          - label: What We Offer (Pillars)
+            name: pillars
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - {label: Icon (emoji), name: icon, widget: string}
+              - {label: Title, name: title, widget: string}
+              - {label: Description, name: description, widget: text}
+          - label: Affiliations
+            name: affiliations
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - {label: Abbreviation, name: abbr, widget: string}
+              - {label: Full Name, name: name, widget: string}
+              - {label: Description, name: description, widget: text}
+
+      - label: Programs Overview
+        name: programs
+        file: content/pages/programs.json
+        fields:
+          - label: Programs
+            name: programs
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - {label: Link URL, name: link, widget: string}
+              - {label: Image, name: image, widget: image, required: false}
+              - {label: Image Alt Text, name: imageAlt, widget: string}
+              - {label: Badge, name: badge, widget: string}
+              - {label: Title, name: title, widget: string}
+              - {label: Description, name: description, widget: text}
+
+      - label: "Junior Girls (Paradise Hitters)"
+        name: junior-girls
+        file: content/pages/junior-girls.json
+        fields:
+          - {label: About Paragraph 1, name: para1, widget: text}
+          - {label: About Paragraph 2, name: para2, widget: text}
+          - {label: About Paragraph 3, name: para3, widget: text}
+          - label: "What's Included"
+            name: includes
+            widget: list
+            summary: "{{fields.item}}"
+            fields:
+              - {label: Item, name: item, widget: string}
+          - {label: Season Fee, name: fee, widget: string}
+          - {label: Age Group, name: ageGroup, widget: string}
+          - label: Quick Facts
+            name: facts
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - {label: Label, name: label, widget: string}
+              - {label: Value, name: value, widget: string}
+
+      - label: "Junior Boys (Big Wave Riders)"
+        name: junior-boys
+        file: content/pages/junior-boys.json
+        fields:
+          - {label: About Paragraph 1, name: para1, widget: text}
+          - {label: About Paragraph 2, name: para2, widget: text}
+          - {label: About Paragraph 3, name: para3, widget: text}
+          - label: "What's Included"
+            name: includes
+            widget: list
+            summary: "{{fields.item}}"
+            fields:
+              - {label: Item, name: item, widget: string}
+          - {label: Season Fee, name: fee, widget: string}
+          - {label: Age Group, name: ageGroup, widget: string}
+          - label: Quick Facts
+            name: facts
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - {label: Label, name: label, widget: string}
+              - {label: Value, name: value, widget: string}
+
+      - label: "Men's National Team"
+        name: mens-national
+        file: content/pages/mens-national.json
+        fields:
+          - {label: About Paragraph 1, name: para1, widget: text}
+          - {label: About Paragraph 2, name: para2, widget: text}
+          - {label: About Paragraph 3, name: para3, widget: text}
+          - label: Competitions
+            name: competitions
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - {label: Icon (emoji), name: icon, widget: string}
+              - {label: Name, name: name, widget: string}
+              - {label: Description, name: description, widget: text}
+          - label: Team Info Facts
+            name: facts
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - {label: Label, name: label, widget: string}
+              - {label: Value, name: value, widget: string}
+
+      - label: "Women's National Team"
+        name: womens-national
+        file: content/pages/womens-national.json
+        fields:
+          - {label: About Paragraph 1, name: para1, widget: text}
+          - {label: About Paragraph 2, name: para2, widget: text}
+          - {label: About Paragraph 3, name: para3, widget: text}
+          - label: Competitions
+            name: competitions
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - {label: Icon (emoji), name: icon, widget: string}
+              - {label: Name, name: name, widget: string}
+              - {label: Description, name: description, widget: text}
+          - label: Team Info Facts
+            name: facts
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - {label: Label, name: label, widget: string}
+              - {label: Value, name: value, widget: string}
+
+      - label: National Beach Team
+        name: national-beach-team
+        file: content/pages/national-beach-team.json
+        fields:
+          - {label: About Paragraph 1, name: para1, widget: text}
+          - {label: About Paragraph 2, name: para2, widget: text}
+          - {label: About Paragraph 3, name: para3, widget: text}
+          - label: Training Groups
+            name: groups
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - {label: Icon (emoji), name: icon, widget: string}
+              - {label: Name, name: name, widget: string}
+              - {label: Description, name: description, widget: text}
+          - label: Team Info Facts
+            name: facts
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - {label: Label, name: label, widget: string}
+              - {label: Value, name: value, widget: string}
+
+      - label: Youth Camps
+        name: youth-camps
+        file: content/pages/youth-camps.json
+        fields:
+          - {label: About Paragraph 1, name: para1, widget: text}
+          - {label: About Paragraph 2, name: para2, widget: text}
+          - label: Daily Schedule
+            name: schedule
+            widget: list
+            summary: "{{fields.time}}"
+            fields:
+              - {label: Time, name: time, widget: string}
+              - {label: Activity, name: activity, widget: string}
+
+      - label: Coaching Program
+        name: coaching
+        file: content/pages/coaching.json
+        fields:
+          - {label: About Paragraph 1, name: para1, widget: text}
+          - {label: About Paragraph 2, name: para2, widget: text}
+          - {label: About Paragraph 3, name: para3, widget: text}
+          - label: Program Info Facts
+            name: facts
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - {label: Label, name: label, widget: string}
+              - {label: Value, name: value, widget: string}

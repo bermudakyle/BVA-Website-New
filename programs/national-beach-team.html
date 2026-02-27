@@ -45,15 +45,22 @@
         <div class="reveal">
           <div class="sec-tag" style="margin-bottom:.75rem;">About the Program</div>
           <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;text-transform:uppercase;color:var(--fg);line-height:1.1;margin-bottom:1rem;">BERMUDA SAND<br>ON THE WORLD STAGE.</h2>
-          <p style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">The BVA National Beach Team program develops Bermuda's top beach volleyball players for international competition. The program operates four training groups covering both senior and under-19 levels for men and women.</p>
-          <p style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">Beach volleyball is one of the most iconic sports in Bermuda — played on the island's famous pink sand beaches and in international arenas. The national beach program connects Bermuda's beach culture with the global game.</p>
-          <p style="color:var(--fg2);line-height:1.75;">Selection to the national beach team requires active BVA membership, consistent participation in the Summer Beach League, and demonstrated skill at the national level.</p>
+          <p data-field="para1" style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">The BVA National Beach Team program develops Bermuda's top beach volleyball players for international competition. The program operates four training groups covering both senior and under-19 levels for men and women.</p>
+          <p data-field="para2" style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">Beach volleyball is one of the most iconic sports in Bermuda — played on the island's famous pink sand beaches and in international arenas. The national beach program connects Bermuda's beach culture with the global game.</p>
+          <p data-field="para3" style="color:var(--fg2);line-height:1.75;">Selection to the national beach team requires active BVA membership, consistent participation in the Summer Beach League, and demonstrated skill at the national level.</p>
         </div>
 
         <!-- Training Groups -->
         <div class="reveal" style="margin-top:2.5rem;">
           <h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:1.3rem;text-transform:uppercase;color:var(--fg);margin-bottom:1.25rem;">Training Groups</h3>
-          <div class="competitions-grid">
+          <div class="competitions-grid" data-list="groups">
+            <template>
+              <div class="competition-card">
+                <div class="comp-flag" data-field="icon"></div>
+                <div class="comp-name" data-field="name"></div>
+                <div class="comp-desc" data-field="description"></div>
+              </div>
+            </template>
             <div class="competition-card">
               <div class="comp-flag">🏖️</div>
               <div class="comp-name">Senior Men</div>
@@ -129,7 +136,10 @@
       <div class="program-sidebar">
         <div class="sidebar-card reveal">
           <div class="sidebar-card-title">Team Info</div>
-          <ul class="sidebar-facts">
+          <ul class="sidebar-facts" data-list="facts">
+            <template>
+              <li><span class="fact-label" data-field="label"></span><span class="fact-val" data-field="value"></span></li>
+            </template>
             <li><span class="fact-label">Level</span><span class="fact-val">National Team</span></li>
             <li><span class="fact-label">Format</span><span class="fact-val">2v2 Beach</span></li>
             <li><span class="fact-label">Groups</span><span class="fact-val">4 (Sr + U19)</span></li>
@@ -181,4 +191,6 @@
   <div class="footer-bottom"><p>© 2026 Bermuda Volleyball Association. <span>Registered Charity #646.</span></p><p>Affiliated with <span>ECVA · NORCECA · FIVB</span></p></div>
 </footer>
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/cms-loader.js"></script>
+<script>loadPageContent('national-beach-team');</script>
 </body></html>

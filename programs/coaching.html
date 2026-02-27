@@ -45,9 +45,9 @@
         <div class="reveal">
           <div class="sec-tag" style="margin-bottom:.75rem;">About the Program</div>
           <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;text-transform:uppercase;color:var(--fg);line-height:1.1;margin-bottom:1rem;">BECOME A<br>CERTIFIED COACH.</h2>
-          <p style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">BVA offers coaching certification clinics through Volleyball Canada's National Coaching Certification Program (NCCP). These clinics are typically offered each fall and are open to anyone who wishes to improve their knowledge of the game and become a certified coach.</p>
-          <p style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">Whether you want to coach youth volleyball, assist a league team, or develop a national-level program, BVA's coaching certification pathway gives you the skills and credentials to do it right.</p>
-          <p style="color:var(--fg2);line-height:1.75;">BVA strongly encourages all coaches working with junior and national teams to hold at minimum a Level 1 certification.</p>
+          <p data-field="para1" style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">BVA offers coaching certification clinics through Volleyball Canada's National Coaching Certification Program (NCCP). These clinics are typically offered each fall and are open to anyone who wishes to improve their knowledge of the game and become a certified coach.</p>
+          <p data-field="para2" style="color:var(--fg2);line-height:1.75;margin-bottom:1rem;">Whether you want to coach youth volleyball, assist a league team, or develop a national-level program, BVA's coaching certification pathway gives you the skills and credentials to do it right.</p>
+          <p data-field="para3" style="color:var(--fg2);line-height:1.75;">BVA strongly encourages all coaches working with junior and national teams to hold at minimum a Level 1 certification.</p>
         </div>
 
         <!-- Certification Levels -->
@@ -101,7 +101,10 @@
       <div class="program-sidebar">
         <div class="sidebar-card reveal">
           <div class="sidebar-card-title">Program Info</div>
-          <ul class="sidebar-facts">
+          <ul class="sidebar-facts" data-list="facts">
+            <template>
+              <li><span class="fact-label" data-field="label"></span><span class="fact-val" data-field="value"></span></li>
+            </template>
             <li><span class="fact-label">Provider</span><span class="fact-val">Volleyball Canada</span></li>
             <li><span class="fact-label">Levels</span><span class="fact-val">Level 1, Level 2</span></li>
             <li><span class="fact-label">Also offered</span><span class="fact-val">CAP Program</span></li>
@@ -153,4 +156,6 @@
   <div class="footer-bottom"><p>© 2026 Bermuda Volleyball Association. <span>Registered Charity #646.</span></p><p>Affiliated with <span>ECVA · NORCECA · FIVB</span></p></div>
 </footer>
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/cms-loader.js"></script>
+<script>loadPageContent('coaching');</script>
 </body></html>
