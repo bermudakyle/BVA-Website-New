@@ -1,6 +1,9 @@
 node_modules/
 temporary screenshots/
-assets/images/
+assets/images/**
+# Allow CMS-uploaded images to be tracked and deployed
+!assets/images/uploads/
+!assets/images/uploads/**
 *.mjs
 package.json
 package-lock.json

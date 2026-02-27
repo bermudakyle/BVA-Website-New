@@ -1,0 +1,15 @@
+{
+  "heroSlides": [
+    { "image": "/assets/images/2024/02/Mens-Beach.jpeg", "alt": "Men's Beach Volleyball" },
+    { "image": "/assets/images/2024/02/Womens-Beach.jpeg", "alt": "Women's Beach Volleyball" },
+    { "image": "/assets/images/2025/03/Senior_volleyball7174.jpg", "alt": "Senior Volleyball" },
+    { "image": "/assets/images/2025/12/Coed-indoor-1-jan.jpeg", "alt": "Coed Indoor Volleyball" },
+    { "image": "/assets/images/2022/02/Camp-Group-Pic.jpeg", "alt": "Youth Camp" },
+    { "image": "/assets/images/2025/07/2025_Same_Sex_tournament_2.jpg", "alt": "Beach Volleyball" }
+  ],
+  "sectionOrder": [
+    { "id": "quick-links" },
+    { "id": "programs" },
+    { "id": "news-events" }
+  ]
+}

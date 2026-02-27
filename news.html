@@ -32,91 +32,39 @@
   <div class="page-header-content"><h1>News</h1><p>Latest updates from the Bermuda Volleyball Association</p></div>
 </div>
 
-<!-- FEATURED ARTICLE -->
-<section class="sec" style="background:var(--surface);padding-top:56px;padding-bottom:56px;">
-  <div class="sec-inner reveal">
-    <div class="news-featured">
-      <div class="news-featured-img">
-        <img src="/assets/images/2025/03/Corporate_Tournament.jpg" alt="Summer League 2026" loading="lazy">
-        <div class="news-featured-badge">Featured</div>
-      </div>
-      <div class="news-featured-body">
-        <div class="sec-tag" style="margin-bottom:.5rem;">Summer 2026</div>
-        <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;text-transform:uppercase;color:var(--fg);line-height:1.1;margin-bottom:.75rem;">Summer Beach League Registration Now Open</h2>
-        <p style="font-size:.9rem;color:var(--fg2);line-height:1.7;margin-bottom:1.25rem;">The Bermuda Volleyball Association is pleased to announce that registration for the 2026 Summer Beach League is now open. Teams can register for Monday through Thursday play at Horseshoe Bay Beach and Elbow Beach. Both recreational and competitive divisions are available for 2v2 and 4v4 formats.</p>
-        <div style="font-size:.75rem;color:var(--fg3);margin-bottom:1.25rem;">February 10, 2026 · BVA Staff</div>
-        <a href="/leagues.html" class="btn-primary">View League Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<!-- FEATURED ARTICLE — populated by JavaScript -->
+<section class="sec" id="news-featured-section" style="background:var(--surface);padding-top:56px;padding-bottom:56px;">
+  <div class="sec-inner reveal" id="news-featured-container">
+    <div class="news-featured skeleton-featured" aria-label="Loading featured article">
+      <div class="news-card skeleton" style="flex:1;min-height:320px;"></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:12px;">
+        <div class="skeleton-line" style="width:30%;height:14px;"></div>
+        <div class="skeleton-line" style="width:85%;height:28px;"></div>
+        <div class="skeleton-line" style="width:75%;height:28px;"></div>
+        <div class="skeleton-line" style="width:90%;height:14px;margin-top:8px;"></div>
+        <div class="skeleton-line" style="width:80%;height:14px;"></div>
+        <div class="skeleton-line" style="width:60%;height:14px;"></div>
+        <div class="skeleton-line" style="width:25%;height:36px;margin-top:8px;border-radius:6px;"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- NEWS GRID -->
+<!-- NEWS GRID — populated by JavaScript -->
 <section class="sec" style="background:var(--mid);">
   <div class="sec-inner">
     <div class="sec-head reveal"><div><div class="sec-tag">Latest</div><h2 class="sec-h2">ALL NEWS.</h2></div></div>
-    <div class="news-grid">
-
-      <div class="news-card reveal">
-        <div class="news-card-img"><img src="/assets/images/2024/02/Womens-Beach.jpeg" alt="Women's National Team" loading="lazy"><div class="news-card-overlay"></div></div>
-        <div class="news-card-body">
-          <div class="news-card-tag">National Teams</div>
-          <div class="news-card-title">Women's National Team Prepares for 2026 ECVA Championships</div>
-          <div class="news-card-meta">January 28, 2026</div>
-          <p class="news-card-excerpt">The BVA Women's National Team has begun intensive preparation for the upcoming ECVA Championships. Head Coach Gary LeBlanc has been working with the squad through a rigorous training program aimed at building on last year's silver medal performance at the Nike International Volleyball Festival.</p>
-        </div>
-      </div>
-
-      <div class="news-card reveal d1">
-        <div class="news-card-img"><img src="/assets/images/2025/03/Senior_volleyball7174.jpg" alt="Men's National Team" loading="lazy"><div class="news-card-overlay"></div></div>
-        <div class="news-card-body">
-          <div class="news-card-tag">National Teams</div>
-          <div class="news-card-title">Men's National Team Announces 2026 Competition Schedule</div>
-          <div class="news-card-meta">January 15, 2026</div>
-          <p class="news-card-excerpt">The BVA Men's National Team has confirmed their 2026 competition calendar including NORCECA qualifying events, the Island Games, and the US Open Championships. Tryouts for new squad members will be announced shortly.</p>
-        </div>
-      </div>
-
-      <div class="news-card reveal d2">
-        <div class="news-card-img"><img src="/assets/images/2025/02/March_Youth_Camp.jpg" alt="Youth Camps" loading="lazy" onerror="this.src='/assets/images/2025/12/Coed-indoor-1-jan.jpeg'"><div class="news-card-overlay"></div></div>
-        <div class="news-card-body">
-          <div class="news-card-tag">Youth Programs</div>
-          <div class="news-card-title">March Break Volleyball Camps — Registration Open</div>
-          <div class="news-card-meta">January 8, 2026</div>
-          <p class="news-card-excerpt">BVA Youth Volleyball Camps are back for March Break 2026! Two weeks of skills-based training at Warwick Academy Gymnasium. Spaces are limited — register early to secure your spot. Ages 8–14, $300/week.</p>
-        </div>
-      </div>
-
-      <div class="news-card reveal">
-        <div class="news-card-img"><img src="/assets/images/2025/07/2025_Same_Sex_tournament_2.jpg" alt="Beach Volleyball" loading="lazy"><div class="news-card-overlay"></div></div>
-        <div class="news-card-body">
-          <div class="news-card-tag">Leagues</div>
-          <div class="news-card-title">2025 Summer League Wrap-Up: Champions Crowned at Horseshoe Bay</div>
-          <div class="news-card-meta">October 3, 2025</div>
-          <p class="news-card-excerpt">The 2025 BVA Summer Beach League concluded with an exciting championship weekend at Horseshoe Bay. This season saw record participation across both recreational and competitive divisions, with over 40 teams competing throughout the summer.</p>
-        </div>
-      </div>
-
-      <div class="news-card reveal d1">
-        <div class="news-card-img"><img src="/assets/images/2025/03/Corporate_Tournament.jpg" alt="Bermuda Open" loading="lazy"><div class="news-card-overlay"></div></div>
-        <div class="news-card-body">
-          <div class="news-card-tag">Tournaments</div>
-          <div class="news-card-title">Bermuda Open 2025 Recap: International Teams Shine</div>
-          <div class="news-card-meta">August 18, 2025</div>
-          <p class="news-card-excerpt">The annual Bermuda Open drew teams from across the Caribbean and North America to Horseshoe Bay Beach. The 4v4 format delivered spectacular beach volleyball action over two exciting days of competition.</p>
-        </div>
-      </div>
-
-      <div class="news-card reveal d2">
-        <div class="news-card-img"><img src="/assets/images/2022/02/Camp-Group-Pic.jpeg" alt="Junior Program" loading="lazy"><div class="news-card-overlay"></div></div>
-        <div class="news-card-body">
-          <div class="news-card-tag">Junior Programs</div>
-          <div class="news-card-title">Paradise Hitters and Big Wave Riders Complete Fall Season</div>
-          <div class="news-card-meta">November 22, 2025</div>
-          <p class="news-card-excerpt">Both BVA junior programs had a strong fall season with multiple players showing significant development. Several athletes from the Paradise Hitters program have been identified for potential national team consideration.</p>
-        </div>
-      </div>
-
+    <div class="news-grid" id="news-grid-container">
+      <div class="news-card skeleton"></div>
+      <div class="news-card skeleton" style="animation-delay:.15s"></div>
+      <div class="news-card skeleton" style="animation-delay:.3s"></div>
+      <div class="news-card skeleton" style="animation-delay:.45s"></div>
+      <div class="news-card skeleton" style="animation-delay:.6s"></div>
+      <div class="news-card skeleton" style="animation-delay:.75s"></div>
+    </div>
+    <div id="news-empty-state" style="display:none;text-align:center;padding:4rem 0;color:var(--fg3);">
+      <p style="font-family:'Barlow Condensed',sans-serif;font-size:1.5rem;font-weight:700;text-transform:uppercase;">No articles yet</p>
+      <p style="font-size:.85rem;margin-top:.5rem;">Check back soon for updates.</p>
     </div>
   </div>
 </section>
@@ -132,4 +80,146 @@
   <div class="footer-bottom"><p>© 2026 Bermuda Volleyball Association. <span>Registered Charity #646.</span></p><p>Affiliated with <span>ECVA · NORCECA · FIVB</span></p></div>
 </footer>
 <script src="/assets/js/main.js"></script>
+<script>
+/* ── BVA News Loader — reads from /content/news/ Markdown files ── */
+(async function () {
+
+  /* ── Tiny frontmatter parser (no deps) ───────────────── */
+  function parseFrontmatter(text) {
+    const match = text.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+    if (!match) return { data: {}, content: text };
+    const data = {};
+    match[1].split(/\r?\n/).forEach(line => {
+      const colon = line.indexOf(':');
+      if (colon < 1) return;
+      const key = line.slice(0, colon).trim();
+      let val = line.slice(colon + 1).trim();
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) val = val.slice(1, -1);
+      if (val === 'true') val = true;
+      if (val === 'false') val = false;
+      data[key] = val;
+    });
+    return { data, content: match[2].trim() };
+  }
+
+  /* ── Escape HTML ──────────────────────────────────────── */
+  function esc(str) {
+    return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  /* ── Format date ──────────────────────────────────────── */
+  function fmtDate(d) {
+    if (!d) return '';
+    try { return new Date(String(d) + 'T12:00:00').toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' }); }
+    catch { return String(d); }
+  }
+
+  /* ── Fallback image ───────────────────────────────────── */
+  const FALLBACK_IMG = '/assets/images/2024/02/Mens-Beach.jpeg';
+
+  /* ── 1. Fetch article list ────────────────────────────── */
+  let filenames = [];
+  try {
+    const res = await fetch('/content/news/index.json');
+    if (!res.ok) throw new Error('list fetch failed');
+    filenames = await res.json();
+  } catch (e) {
+    console.warn('BVA: could not fetch news list', e);
+    showError();
+    return;
+  }
+
+  if (!filenames.length) { showEmpty(); return; }
+
+  /* ── 2. Fetch all articles in parallel ───────────────── */
+  const articles = (await Promise.all(filenames.map(async fn => {
+    try {
+      const res = await fetch('/content/news/' + fn);
+      if (!res.ok) return null;
+      const { data, content } = parseFrontmatter(await res.text());
+      const slug = fn.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/\.md$/, '');
+      return { ...data, body: content, filename: fn, slug };
+    } catch { return null; }
+  }))).filter(Boolean);
+
+  if (!articles.length) { showEmpty(); return; }
+
+  /* ── 3. Render featured ───────────────────────────────── */
+  const featured = articles.find(a => a.featured) || articles[0];
+  const grid     = articles.filter(a => a !== featured);
+
+  const fc = document.getElementById('news-featured-container');
+  if (fc) {
+    const img = esc(featured.image || FALLBACK_IMG);
+    fc.innerHTML = `
+      <div class="news-featured reveal in">
+        <div class="news-featured-img">
+          <img src="${img}" alt="${esc(featured.title)}" loading="eager" onerror="this.src='${FALLBACK_IMG}'">
+          <div class="news-featured-badge">Featured</div>
+        </div>
+        <div class="news-featured-body">
+          <div class="sec-tag" style="margin-bottom:.5rem;">${esc(featured.category || 'News')}</div>
+          <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:2rem;text-transform:uppercase;color:var(--fg);line-height:1.1;margin-bottom:.75rem;">${esc(featured.title)}</h2>
+          <p style="font-size:.9rem;color:var(--fg2);line-height:1.7;margin-bottom:1.25rem;">${esc(featured.excerpt)}</p>
+          <div style="font-size:.75rem;color:var(--fg3);margin-bottom:1.25rem;">${fmtDate(featured.date)}</div>
+          <a href="/news.html" class="btn-primary">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>`;
+  }
+
+  /* ── 4. Render grid ───────────────────────────────────── */
+  const gc = document.getElementById('news-grid-container');
+  if (gc) {
+    if (!grid.length) {
+      gc.innerHTML = '';
+      document.getElementById('news-empty-state').style.display = 'block';
+    } else {
+      const delays = ['', ' d1', ' d2'];
+      gc.innerHTML = grid.map((a, i) => {
+        const img = esc(a.image || FALLBACK_IMG);
+        return `
+          <div class="news-card reveal${delays[i % 3]}">
+            <div class="news-card-img">
+              <img src="${img}" alt="${esc(a.title)}" loading="lazy" onerror="this.src='${FALLBACK_IMG}'">
+              <div class="news-card-overlay"></div>
+            </div>
+            <div class="news-card-body">
+              <div class="news-card-tag">${esc(a.category || 'News')}</div>
+              <div class="news-card-title">${esc(a.title)}</div>
+              <div class="news-card-meta">${fmtDate(a.date)}</div>
+              <p class="news-card-excerpt">${esc(a.excerpt)}</p>
+            </div>
+          </div>`;
+      }).join('');
+
+      /* Re-observe newly inserted .reveal elements */
+      const newReveal = gc.querySelectorAll('.reveal');
+      if (window.IntersectionObserver) {
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+        }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+        newReveal.forEach(el => io.observe(el));
+      }
+      setTimeout(() => newReveal.forEach(el => el.classList.add('in')), 500);
+    }
+  }
+
+  /* ── Helpers ──────────────────────────────────────────── */
+  function showEmpty() {
+    const gc = document.getElementById('news-grid-container');
+    if (gc) gc.innerHTML = '';
+    const fc = document.getElementById('news-featured-container');
+    if (fc) fc.innerHTML = '';
+    const es = document.getElementById('news-empty-state');
+    if (es) es.style.display = 'block';
+  }
+
+  function showError() {
+    const fc = document.getElementById('news-featured-container');
+    if (fc) fc.innerHTML = '<p style="color:var(--fg3);text-align:center;padding:2rem 0;">Could not load articles. Please try again later.</p>';
+    showEmpty();
+  }
+
+})();
+</script>
 </body></html>

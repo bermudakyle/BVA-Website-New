@@ -80,7 +80,7 @@
 
 
 <!-- QUICK LINKS -->
-<section class="sec" style="background:var(--mid);padding-top:64px;padding-bottom:64px;">
+<section class="sec" data-section-id="quick-links" style="background:var(--mid);padding-top:64px;padding-bottom:64px;">
   <div class="sec-inner">
     <div class="quick-links reveal">
       <a href="/membership.html" class="quick-link">
@@ -109,7 +109,7 @@
 
 
 <!-- PROGRAMS -->
-<section class="sec noise" id="programs" style="background:var(--mid);overflow:hidden;">
+<section class="sec noise" id="programs" data-section-id="programs" style="background:var(--mid);overflow:hidden;">
   <div class="mesh"></div>
   <div class="sec-inner">
     <div class="sec-head reveal">
@@ -165,7 +165,7 @@
 
 
 <!-- NEWS + SIDEBAR -->
-<section class="sec" style="background:var(--deep);">
+<section class="sec" data-section-id="news-events" style="background:var(--deep);">
   <div class="sec-inner">
     <div class="home-layout">
       <!-- Left: News + Events -->
@@ -271,5 +271,79 @@
 </footer>
 
 <script src="/assets/js/main.js"></script>
+<script>
+/* ── BVA Homepage Config Loader — reads from /content/homepage.json ── */
+(async function () {
+
+  let config;
+  try {
+    const res = await fetch('/content/homepage.json');
+    if (!res.ok) throw new Error('not found');
+    config = await res.json();
+  } catch {
+    /* Config missing — site stays as hardcoded HTML with no error */
+    return;
+  }
+
+  /* ── 1. Hero slides ─────────────────────────────────── */
+  if (config.heroSlides && config.heroSlides.length) {
+    const heroRight = document.querySelector('.hero-right');
+    const heroDots  = document.querySelector('.hero-dots');
+    if (heroRight && heroDots) {
+      /* Stop the existing slider interval started by main.js */
+      clearInterval(window._heroTimer);
+
+      heroRight.innerHTML = config.heroSlides.map((slide, i) =>
+        `<div class="hero-slide${i === 0 ? ' active' : ''}">
+          <img src="${slide.image}" alt="${(slide.alt || '').replace(/"/g,'&quot;')}">
+        </div>`
+      ).join('');
+
+      heroDots.innerHTML = config.heroSlides.map((_, i) =>
+        `<button class="hero-dot${i === 0 ? ' active' : ''}" aria-label="Slide ${i + 1}"></button>`
+      ).join('');
+
+      /* Restart slider with rebuilt DOM */
+      reinitHeroSlider();
+    }
+  }
+
+  /* ── 2. Section order ───────────────────────────────── */
+  if (config.sectionOrder && config.sectionOrder.length) {
+    config.sectionOrder.forEach(({ id }) => {
+      const section = document.querySelector('[data-section-id="' + id + '"]');
+      if (section && section.parentNode) {
+        /* appendChild moves the node to end of parent;
+           iterating in desired order produces correct final order */
+        section.parentNode.appendChild(section);
+      }
+    });
+  }
+
+  /* ── Hero slider reinitializer ──────────────────────── */
+  /* Mirrors the IIFE in main.js so the rebuilt DOM works  */
+  function reinitHeroSlider() {
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots   = document.querySelectorAll('.hero-dot');
+    if (!slides.length) return;
+    let current = 0;
+    const show = n => {
+      slides[current].classList.remove('active');
+      if (dots[current]) dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      if (dots[current]) dots[current].classList.add('active');
+    };
+    show(0);
+    const start = () => { window._heroTimer = setInterval(() => show(current + 1), 5500); };
+    const stop  = () => clearInterval(window._heroTimer);
+    start();
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => { stop(); show(i); start(); });
+    });
+  }
+
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+name: Deploy to SiteGround
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    name: Build & Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Generate content/news/index.json so Apache can serve it as a static file.
+      # (The local serve.mjs does this dynamically; on SiteGround it must be a real file.)
+      - name: Generate news article manifest
+        run: |
+          node -e "
+            const fs = require('fs');
+            const dir = 'content/news';
+            if (!fs.existsSync(dir)) { console.log('No news dir, skipping'); process.exit(0); }
+            const files = fs.readdirSync(dir)
+              .filter(f => f.endsWith('.md'))
+              .sort()
+              .reverse();
+            fs.writeFileSync(dir + '/index.json', JSON.stringify(files, null, 2));
+            console.log('Generated content/news/index.json with', files.length, 'articles:', files);
+          "
+
+      # Deploy everything to SiteGround via FTP.
+      # Files excluded: .git, node_modules, dev-only files, and local screenshots.
+      - name: Deploy via FTP to SiteGround
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: /public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/temporary screenshots/**
+            .github/**

@@ -66,7 +66,7 @@ if (mobileMenuBtn && mobileMenu) {
   };
 
   show(0);
-  const start = () => { timer = setInterval(() => show(current + 1), 5500); };
+  const start = () => { window._heroTimer = timer = setInterval(() => show(current + 1), 5500); };
   const stop  = () => clearInterval(timer);
   start();
 

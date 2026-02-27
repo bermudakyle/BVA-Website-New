@@ -1,0 +1,124 @@
+# ── Backend ───────────────────────────────────────────────────────────────────
+# For LOCAL development: set local_backend: true and run `npm run cms:local`
+# No login required locally — the CMS reads/writes directly to your filesystem.
+#
+# For PRODUCTION: fill in your GitHub repo and deploy the Sveltia Auth Worker.
+# See: https://github.com/sveltia/sveltia-cms-auth for the one-time Cloudflare setup.
+
+backend:
+  name: github
+  repo: bermudakyle/BVA-Website-New
+  branch: main
+  base_url: https://sveltia-cms-auth.bermuda-kyle.workers.dev/   # Sveltia OAuth proxy (production only)
+
+# Uncomment the line below for local development (disables OAuth, saves to local files)
+local_backend: true
+
+# ── Media ─────────────────────────────────────────────────────────────────────
+media_folder: assets/images/uploads
+public_folder: /assets/images/uploads
+
+# ── Collections ───────────────────────────────────────────────────────────────
+collections:
+
+  # ── News Articles ────────────────────────────────────────────────────────────
+  - name: news
+    label: News Articles
+    label_singular: Article
+    folder: content/news
+    create: true
+    delete: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    sortable_fields: [date, title]
+    view_groups:
+      - label: Category
+        field: category
+    preview_path: "news.html"
+    fields:
+      - label: Title
+        name: title
+        widget: string
+        hint: "Article headline — keep it clear and concise."
+
+      - label: Publish Date
+        name: date
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "MMMM D, YYYY"
+        time_format: false
+
+      - label: Category
+        name: category
+        widget: select
+        options:
+          - { label: "National Teams",   value: "National Teams" }
+          - { label: "Junior Programs",  value: "Junior Programs" }
+          - { label: "Leagues",          value: "Leagues" }
+          - { label: "Tournaments",      value: "Tournaments" }
+          - { label: "Youth Programs",   value: "Youth Programs" }
+          - { label: "Association",      value: "Association" }
+
+      - label: Excerpt
+        name: excerpt
+        widget: text
+        hint: "Short summary shown on news listing cards (2–3 sentences max)."
+
+      - label: Featured Image
+        name: image
+        widget: image
+        required: false
+        allow_multiple: false
+        hint: "Main image for this article. Displayed on the news card and at the top of the article."
+
+      - label: Featured Article
+        name: featured
+        widget: boolean
+        default: false
+        hint: "Pin this article as the featured (large) story at the top of the news page. Only one article should be featured at a time."
+
+      - label: Body
+        name: body
+        widget: markdown
+        hint: "Full article content. Use headings (##, ###), bold, links, and lists freely."
+
+  # ── Homepage Page Builder ─────────────────────────────────────────────────────
+  - name: homepage
+    label: Homepage
+    files:
+      - label: "Page Builder"
+        name: homepage_config
+        file: content/homepage.json
+        fields:
+
+          - label: "Hero Slides"
+            name: heroSlides
+            widget: list
+            min: 1
+            max: 8
+            summary: "{{fields.alt}}"
+            hint: "Drag rows to reorder slides. The first slide is shown when the page loads. Upload images to assets/images/uploads/ for best results."
+            fields:
+              - label: Image
+                name: image
+                widget: image
+                hint: "Use a landscape photo, ideally 1200×800px or larger."
+              - label: Alt Text
+                name: alt
+                widget: string
+                hint: "Describe the image for screen readers and SEO (e.g. 'Men's beach volleyball at Horseshoe Bay')."
+
+          - label: "Homepage Section Order"
+            name: sectionOrder
+            widget: list
+            min: 3
+            max: 3
+            summary: "{{fields.id}}"
+            hint: "Drag rows to reorder the three main content sections on the homepage. All three must be present."
+            fields:
+              - label: Section
+                name: id
+                widget: select
+                options:
+                  - { label: "Quick Links",     value: "quick-links" }
+                  - { label: "Programs Mosaic", value: "programs" }
+                  - { label: "News + Events",   value: "news-events" }
