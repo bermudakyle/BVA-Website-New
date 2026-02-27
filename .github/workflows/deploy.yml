@@ -39,7 +39,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           local-dir: ./
-          server-dir: /
+          server-dir: /kyleh105.sg-host.com/public_html/
           exclude: |
             **/.git*
             **/.git*/**
