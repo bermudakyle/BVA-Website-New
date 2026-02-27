@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>League Admin — BVA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    /* ── Admin layout ──────────────────────────────────────── */
+    .admin-wrap {
+      max-width: 1100px; margin: 0 auto;
+      padding: 40px 3rem 100px;
+    }
+    .admin-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem;
+    }
+    .admin-title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: clamp(1.8rem, 4vw, 3rem); text-transform: uppercase;
+      letter-spacing: -.01em; color: var(--fg); line-height: 1;
+    }
+    .admin-title span { color: var(--pink); }
+
+    /* ── Tabs ──────────────────────────────────────────────── */
+    .admin-tabs {
+      display: flex; gap: .5rem; flex-wrap: wrap; margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border); padding-bottom: 0;
+    }
+    .admin-tab {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 1rem; text-transform: uppercase; letter-spacing: .06em;
+      padding: .6rem 1.5rem; border: none; background: none;
+      color: var(--fg2); cursor: pointer; border-bottom: 2px solid transparent;
+      margin-bottom: -1px; transition: color .18s, border-color .18s;
+    }
+    .admin-tab:hover { color: var(--fg); }
+    .admin-tab.active { color: var(--pink); border-bottom-color: var(--pink); }
+
+    .admin-panel { display: none; }
+    .admin-panel.active { display: block; }
+
+    /* ── Cards / sections ──────────────────────────────────── */
+    .admin-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 1.75rem 2rem; margin-bottom: 1.5rem;
+    }
+    .admin-card-title {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+      font-size: 1.1rem; text-transform: uppercase; letter-spacing: .06em;
+      color: var(--fg); margin-bottom: 1.25rem;
+    }
+
+    /* ── Form elements ─────────────────────────────────────── */
+    .field-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: flex-end; }
+    .field { display: flex; flex-direction: column; gap: .4rem; flex: 1; min-width: 120px; }
+    .field label {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: .72rem; text-transform: uppercase; letter-spacing: .14em; color: var(--fg2);
+    }
+    .field input, .field select, .field textarea {
+      background: var(--raised); border: 1px solid var(--border); border-radius: 6px;
+      color: var(--fg); font-family: 'DM Sans', sans-serif; font-size: .88rem;
+      padding: .55rem .85rem; outline: none; width: 100%;
+      transition: border-color .18s;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: var(--teal);
+    }
+    .field select option { background: var(--mid); }
+    .field-hint { font-size: .74rem; color: var(--fg3); margin-top: .2rem; }
+
+    /* ── Buttons ───────────────────────────────────────────── */
+    .btn {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+      font-size: .9rem; text-transform: uppercase; letter-spacing: .1em;
+      padding: .6rem 1.4rem; border-radius: 6px; border: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: .5rem;
+      transition: background .18s, transform .14s, opacity .18s;
+      text-decoration: none;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+    .btn-pink { background: var(--pink); color: #fff; }
+    .btn-pink:hover { background: #c85a7e; }
+    .btn-teal-s { background: var(--teal-lo); color: var(--teal); border: 1px solid rgba(91,160,212,.3); }
+    .btn-teal-s:hover { background: var(--teal); color: #fff; }
+    .btn-ghost { background: rgba(255,255,255,.05); color: var(--fg2); border: 1px solid var(--border); }
+    .btn-ghost:hover { color: var(--fg); border-color: rgba(255,255,255,.18); }
+    .btn-danger { background: rgba(248,113,113,.12); color: #f87171; border: 1px solid rgba(248,113,113,.25); }
+    .btn-danger:hover { background: #f87171; color: #fff; }
+    .btn-sm { font-size: .78rem; padding: .4rem 1rem; }
+    .btn-icon { padding: .4rem .6rem; }
+
+    /* ── Tables ────────────────────────────────────────────── */
+    .admin-table-wrap { overflow-x: auto; border-radius: var(--r); border: 1px solid var(--border); }
+    .admin-table { width: 100%; border-collapse: collapse; font-size: .85rem; min-width: 400px; }
+    .admin-table th {
+      background: var(--raised); font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700; font-size: .72rem; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--fg2); padding: .6rem 1rem;
+      text-align: left; border-bottom: 1px solid var(--border);
+    }
+    .admin-table td { padding: .65rem 1rem; border-bottom: 1px solid rgba(255,255,255,.04); color: var(--fg); }
+    .admin-table tr:last-child td { border-bottom: none; }
+    .admin-table tr:hover td { background: var(--raised); }
+
+    /* ── Rung / Match entry ────────────────────────────────── */
+    .rung-block {
+      background: var(--mid); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 1.25rem 1.5rem; margin-bottom: 1rem;
+    }
+    .rung-header {
+      display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem; flex-wrap: wrap;
+    }
+    .rung-header input {
+      background: var(--raised); border: 1px solid var(--border); border-radius: 6px;
+      color: var(--fg); font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: 1rem; text-transform: uppercase; padding: .45rem .85rem;
+      flex: 1; min-width: 120px; outline: none; transition: border-color .18s;
+    }
+    .rung-header input:focus { border-color: var(--teal); }
+
+    .match-row {
+      display: grid; grid-template-columns: 1fr auto 1fr auto auto auto auto;
+      gap: .5rem; align-items: center; margin-bottom: .5rem;
+      background: var(--surface); border-radius: 6px; padding: .5rem .75rem;
+    }
+    .match-sep {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      color: var(--fg3); font-size: .9rem; text-align: center;
+    }
+    .match-row select, .match-row input[type="number"] {
+      background: var(--raised); border: 1px solid var(--border); border-radius: 5px;
+      color: var(--fg); font-family: 'DM Sans', sans-serif; font-size: .82rem;
+      padding: .4rem .6rem; outline: none; width: 100%; transition: border-color .18s;
+    }
+    .match-row select:focus, .match-row input[type="number"]:focus { border-color: var(--teal); }
+    .match-row input[type="number"] { width: 70px; text-align: center; }
+    .match-col-label {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: .65rem; text-transform: uppercase; letter-spacing: .1em; color: var(--fg3);
+      text-align: center;
+    }
+    .match-header {
+      display: grid; grid-template-columns: 1fr auto 1fr auto auto auto auto;
+      gap: .5rem; padding: 0 .75rem; margin-bottom: .35rem;
+    }
+
+    /* ── Toast ─────────────────────────────────────────────── */
+    #toast {
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(80px);
+      background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+      padding: .8rem 1.5rem; font-size: .88rem; color: var(--fg);
+      box-shadow: 0 8px 40px rgba(0,0,0,.5);
+      transition: transform .3s cubic-bezier(.33,1,.68,1); z-index: 999; white-space: nowrap;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+    #toast.ok   { border-color: #34d399; color: #34d399; }
+    #toast.err  { border-color: #f87171; color: #f87171; }
+
+    /* ── PIN Modal ─────────────────────────────────────────── */
+    #pin-modal {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(8,14,32,.96); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pin-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 2.5rem; width: 380px; max-width: 92vw;
+      text-align: center;
+    }
+    .pin-box h2 {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900;
+      font-size: 1.8rem; text-transform: uppercase; color: var(--fg); margin-bottom: .4rem;
+    }
+    .pin-box p { font-size: .85rem; color: var(--fg2); margin-bottom: 1.5rem; }
+    .pin-input {
+      width: 100%; background: var(--raised); border: 1.5px solid var(--border);
+      border-radius: 8px; color: var(--fg); font-size: 1.4rem; letter-spacing: .3em;
+      padding: .75rem 1rem; text-align: center; outline: none; margin-bottom: 1rem;
+      transition: border-color .18s; font-family: monospace;
+    }
+    .pin-input:focus { border-color: var(--teal); }
+    .pin-err { font-size: .8rem; color: #f87171; margin-bottom: .75rem; min-height: 1.2em; }
+
+    /* ── League tag colours ────────────────────────────────── */
+    .ltag-beach  { background: rgba(224,120,152,.12); color: var(--pink); border: 1px solid rgba(224,120,152,.25); }
+    .ltag-indoor { background: rgba(91,160,212,.1);   color: var(--teal); border: 1px solid rgba(91,160,212,.2); }
+    .ltag-grass  { background: rgba(52,211,153,.1);   color: #34d399; border: 1px solid rgba(52,211,153,.2); }
+    .league-pill {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+      font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 100px;
+    }
+
+    /* ── History details ───────────────────────────────────── */
+    .night-detail {
+      display: none; background: var(--mid); border-radius: 6px;
+      padding: 1rem 1.25rem; margin-top: .5rem;
+    }
+    .night-detail.open { display: block; }
+    .night-rung-name {
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+      font-size: .9rem; text-transform: uppercase; color: var(--fg); margin-bottom: .4rem;
+    }
+    .night-match-line {
+      font-size: .82rem; color: var(--fg2); padding: .2rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    .night-match-line:last-child { border-bottom: none; }
+    .night-match-score { color: var(--fg); font-weight: 600; }
+
+    /* ── Upload zone ───────────────────────────────────────── */
+    .upload-zone {
+      border: 2px dashed var(--border); border-radius: var(--r);
+      padding: 2rem; text-align: center; cursor: pointer;
+      transition: border-color .2s, background .2s;
+    }
+    .upload-zone:hover, .upload-zone.drag { border-color: var(--teal); background: var(--teal-lo); }
+    .upload-zone p { font-size: .88rem; color: var(--fg2); margin-top: .5rem; }
+    .upload-zone input[type="file"] { display: none; }
+
+    /* ── Empty state ───────────────────────────────────────── */
+    .empty-state { text-align: center; padding: 3rem 1rem; color: var(--fg2); }
+    .empty-state .ei { font-size: 2.5rem; opacity: .5; margin-bottom: .75rem; }
+    .empty-state p { font-size: .88rem; }
+
+    /* ── Divider ───────────────────────────────────────────── */
+    .divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
+  </style>
+</head>
+<body class="page-dark">
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/index.html" class="nav-brand"><img src="/assets/images/bva-logo.jpg" alt="BVA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="nav-brand-fallback" style="display:none">BVA</div><div><div class="nav-brand-name">BVA</div><div class="nav-brand-sub">Bermuda Volleyball</div></div></a>
+  <ul class="nav-links">
+    <li><a href="/standings.html">Standings</a></li>
+    <li><a href="/leagues.html">Leagues</a></li>
+    <li><a href="/news.html">News</a></li>
+  </ul>
+  <a href="/standings.html" class="btn-nav">View Standings</a>
+  <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="8" x2="21" y2="8"/><line x1="3" y1="16" x2="21" y2="16"/></svg></button>
+</nav>
+
+<!-- PIN MODAL -->
+<div id="pin-modal">
+  <div class="pin-box">
+    <div id="pin-icon" style="font-size:2.5rem;margin-bottom:.75rem">🏐</div>
+    <h2 id="pin-title">League Admin</h2>
+    <p id="pin-desc">Enter your admin PIN to continue.</p>
+    <input type="password" class="pin-input" id="pin-input" placeholder="••••" maxlength="20" autocomplete="current-password">
+    <div class="pin-err" id="pin-err"></div>
+    <button class="btn btn-pink" style="width:100%" id="pin-submit">Sign In</button>
+  </div>
+</div>
+
+<!-- ADMIN BODY -->
+<div style="margin-top:68px;min-height:calc(100vh - 68px);background:var(--deep);">
+  <div class="admin-wrap" id="admin-body" style="display:none">
+    <div class="admin-header">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--pink);margin-bottom:.3rem;">League Management</div>
+        <div class="admin-title">BVA <span>Admin</span></div>
+      </div>
+      <button class="btn btn-ghost btn-sm" id="logout-btn">Sign Out</button>
+    </div>
+
+    <!-- TABS -->
+    <div class="admin-tabs">
+      <button class="admin-tab active" data-tab="teams">Teams</button>
+      <button class="admin-tab" data-tab="scores">Enter Scores</button>
+      <button class="admin-tab" data-tab="history">History</button>
+    </div>
+
+    <!-- ── TAB 1: TEAMS ──────────────────────────────────── -->
+    <div class="admin-panel active" id="tab-teams">
+
+      <!-- CSV Import -->
+      <div class="admin-card">
+        <div class="admin-card-title">Import from CSV</div>
+        <div class="upload-zone" id="csv-zone">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto;opacity:.4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <p>Drag & drop your CSV here, or click to browse</p>
+          <p style="font-size:.75rem;margin-top:.25rem;color:var(--fg3)">Columns: <code style="color:var(--teal)">Team Name, League, Rung</code></p>
+          <input type="file" id="csv-input" accept=".csv,text/csv">
+        </div>
+        <div id="csv-preview" style="display:none;margin-top:1rem">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;color:var(--fg2);margin-bottom:.75rem" id="csv-preview-label"></div>
+          <div class="admin-table-wrap" id="csv-preview-table" style="max-height:260px;overflow-y:auto"></div>
+          <div style="display:flex;gap:.75rem;margin-top:1rem">
+            <button class="btn btn-pink" id="csv-confirm">Import These Teams</button>
+            <button class="btn btn-ghost" id="csv-cancel">Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add single team -->
+      <div class="admin-card">
+        <div class="admin-card-title">Add a Team</div>
+        <div class="field-row">
+          <div class="field" style="flex:2">
+            <label>Team Name</label>
+            <input type="text" id="add-team-name" placeholder="e.g. Sand Sharks">
+          </div>
+          <div class="field">
+            <label>League</label>
+            <select id="add-team-league">
+              <option value="beach">Summer Beach</option>
+              <option value="indoor">Winter Indoor</option>
+              <option value="grass">Grass League</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Rung</label>
+            <input type="text" id="add-team-rung" placeholder="e.g. Rung 1">
+          </div>
+          <button class="btn btn-teal-s" id="add-team-btn" style="align-self:flex-end">Add</button>
+        </div>
+      </div>
+
+      <!-- Team list -->
+      <div class="admin-card">
+        <div class="admin-card-title">Registered Teams</div>
+        <div id="teams-list"><div class="empty-state"><div class="ei">🏐</div><p>No teams registered yet.</p></div></div>
+      </div>
+    </div>
+
+    <!-- ── TAB 2: SCORE ENTRY ────────────────────────────── -->
+    <div class="admin-panel" id="tab-scores">
+      <div class="admin-card">
+        <div class="admin-card-title">Match Night Details</div>
+        <div class="field-row">
+          <div class="field">
+            <label>League</label>
+            <select id="score-league" onchange="onLeagueChange()">
+              <option value="beach">Summer Beach League</option>
+              <option value="indoor">Winter Indoor League</option>
+              <option value="grass">Grass League</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Date</label>
+            <input type="date" id="score-date">
+          </div>
+        </div>
+        <div style="font-size:.8rem;color:var(--fg3)">
+          If a match night for this league + date already exists, saving will overwrite it.
+        </div>
+      </div>
+
+      <div id="rungs-container"></div>
+
+      <button class="btn btn-ghost" id="add-rung-btn" style="margin-bottom:1.5rem">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add Rung
+      </button>
+
+      <div style="display:flex;gap:1rem;flex-wrap:wrap">
+        <button class="btn btn-pink" id="save-night-btn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save Match Night
+        </button>
+        <button class="btn btn-ghost" id="clear-scores-btn">Clear Form</button>
+      </div>
+    </div>
+
+    <!-- ── TAB 3: HISTORY ────────────────────────────────── -->
+    <div class="admin-panel" id="tab-history">
+      <div class="admin-card">
+        <div class="admin-card-title">Past Match Nights</div>
+        <button class="btn btn-ghost btn-sm" id="refresh-history-btn" style="margin-bottom:1rem">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+          Refresh
+        </button>
+        <div id="history-list"><div class="empty-state"><div class="ei">📋</div><p>No match nights saved yet.</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+(function () {
+'use strict';
+
+// ── State ─────────────────────────────────────────────────────────────────────
+let teams = {};          // { league: { rung: [teamNames] } }
+let csvParsed = [];      // [{ name, league, rung }]
+
+// ── API helper ────────────────────────────────────────────────────────────────
+async function api(action, opts = {}) {
+  const url = '/api/league.php?action=' + action;
+  const res = await fetch(url, {
+    credentials: 'include',
+    headers: opts.body && !(opts.body instanceof FormData)
+      ? { 'Content-Type': 'application/json' } : {},
+    ...opts,
+    body: opts.body instanceof FormData ? opts.body
+        : opts.body ? JSON.stringify(opts.body) : undefined,
+  });
+  const data = await res.json();
+  if (!res.ok) throw new Error(data.error || 'Request failed');
+  return data;
+}
+
+// ── Toast ─────────────────────────────────────────────────────────────────────
+function toast(msg, type = 'ok') {
+  const el = document.getElementById('toast');
+  el.textContent = (type === 'ok' ? '✓ ' : '✕ ') + msg;
+  el.className = 'show ' + type;
+  clearTimeout(el._t);
+  el._t = setTimeout(() => { el.className = ''; }, 3200);
+}
+
+// ── Tab switching ─────────────────────────────────────────────────────────────
+document.querySelectorAll('.admin-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.admin-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    if (tab.dataset.tab === 'history') loadHistory();
+  });
+});
+
+// ── PIN / Auth ────────────────────────────────────────────────────────────────
+async function initAuth() {
+  try {
+    const status = await api('check-setup');
+    if (!status.setup) {
+      document.getElementById('pin-title').textContent = 'First-Time Setup';
+      document.getElementById('pin-desc').textContent = 'Choose an admin PIN. You\'ll need this to log in.';
+      document.getElementById('pin-submit').textContent = 'Set PIN';
+      document.getElementById('pin-submit').onclick = doSetupPin;
+    } else if (status.authed) {
+      showAdmin();
+    } else {
+      document.getElementById('pin-submit').onclick = doLogin;
+    }
+  } catch (e) {
+    // API not available (e.g. local dev without PHP)
+    document.getElementById('pin-desc').textContent = 'API not available in local preview — deploy to SiteGround to use admin features.';
+    document.getElementById('pin-submit').textContent = 'Preview Mode';
+    document.getElementById('pin-submit').onclick = showAdmin;
+  }
+  document.getElementById('pin-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('pin-submit').click();
+  });
+}
+
+async function doSetupPin() {
+  const pin = document.getElementById('pin-input').value.trim();
+  if (pin.length < 4) { document.getElementById('pin-err').textContent = 'PIN must be at least 4 characters.'; return; }
+  try {
+    await api('setup-pin', { method: 'POST', body: { pin } });
+    showAdmin();
+  } catch (e) { document.getElementById('pin-err').textContent = e.message; }
+}
+
+async function doLogin() {
+  const pin = document.getElementById('pin-input').value.trim();
+  document.getElementById('pin-err').textContent = '';
+  try {
+    await api('auth', { method: 'POST', body: { pin } });
+    showAdmin();
+  } catch (e) { document.getElementById('pin-err').textContent = 'Incorrect PIN.'; }
+}
+
+function showAdmin() {
+  document.getElementById('pin-modal').style.display = 'none';
+  document.getElementById('admin-body').style.display = 'block';
+  loadTeams();
+  setDefaultDate();
+  addRung();
+}
+
+document.getElementById('logout-btn').addEventListener('click', async () => {
+  try { await api('logout', { method: 'POST' }); } catch {}
+  location.reload();
+});
+
+// ── Teams ─────────────────────────────────────────────────────────────────────
+async function loadTeams() {
+  try {
+    teams = await api('get-teams');
+    renderTeamsList();
+  } catch { teams = {}; }
+}
+
+function renderTeamsList() {
+  const el = document.getElementById('teams-list');
+  const leagues = Object.keys(teams);
+  if (!leagues.length) {
+    el.innerHTML = '<div class="empty-state"><div class="ei">🏐</div><p>No teams registered yet.</p></div>';
+    return;
+  }
+  const LABELS = { beach: 'Summer Beach', indoor: 'Winter Indoor', grass: 'Grass League' };
+  const CLASSES = { beach: 'ltag-beach', indoor: 'ltag-indoor', grass: 'ltag-grass' };
+  let html = '';
+  for (const league of leagues) {
+    for (const rung of Object.keys(teams[league]).sort()) {
+      const teamList = teams[league][rung];
+      html += `<div style="margin-bottom:1.5rem">
+        <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.6rem">
+          <span class="league-pill ${CLASSES[league]}">${LABELS[league] || league}</span>
+          <span style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:.85rem;text-transform:uppercase;color:var(--fg2)">${esc(rung)}</span>
+          <span style="font-size:.76rem;color:var(--fg3)">(${teamList.length} teams)</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem">`;
+      for (const t of teamList) {
+        html += `<div style="display:flex;align-items:center;gap:.4rem;background:var(--raised);border:1px solid var(--border);border-radius:6px;padding:.3rem .75rem">
+          <span style="font-size:.83rem;color:var(--fg)">${esc(t)}</span>
+          <button class="btn btn-danger btn-icon btn-sm" onclick="deleteTeam('${esc(t)}','${league}','${esc(rung)}')" title="Remove">✕</button>
+        </div>`;
+      }
+      html += `</div></div>`;
+    }
+  }
+  el.innerHTML = html;
+}
+
+async function deleteTeam(name, league, rung) {
+  if (!confirm(`Remove "${name}" from ${rung}?`)) return;
+  try {
+    teams = (await api('delete-team', { method: 'POST', body: { name, league, rung } })).teams;
+    renderTeamsList();
+    toast('Team removed');
+  } catch (e) { toast(e.message, 'err'); }
+}
+
+document.getElementById('add-team-btn').addEventListener('click', async () => {
+  const name   = document.getElementById('add-team-name').value.trim();
+  const league = document.getElementById('add-team-league').value;
+  const rung   = document.getElementById('add-team-rung').value.trim();
+  if (!name || !rung) { toast('Enter team name and rung', 'err'); return; }
+  try {
+    teams = (await api('add-team', { method: 'POST', body: { name, league, rung } })).teams;
+    document.getElementById('add-team-name').value = '';
+    renderTeamsList();
+    toast('Team added');
+  } catch (e) { toast(e.message, 'err'); }
+});
+
+// ── CSV Import ────────────────────────────────────────────────────────────────
+const csvZone  = document.getElementById('csv-zone');
+const csvInput = document.getElementById('csv-input');
+
+csvZone.addEventListener('click', () => csvInput.click());
+csvZone.addEventListener('dragover', e => { e.preventDefault(); csvZone.classList.add('drag'); });
+csvZone.addEventListener('dragleave', () => csvZone.classList.remove('drag'));
+csvZone.addEventListener('drop', e => {
+  e.preventDefault(); csvZone.classList.remove('drag');
+  const file = e.dataTransfer.files[0];
+  if (file) parseCSVFile(file);
+});
+csvInput.addEventListener('change', () => {
+  if (csvInput.files[0]) parseCSVFile(csvInput.files[0]);
+});
+
+function parseCSVFile(file) {
+  const reader = new FileReader();
+  reader.onload = e => {
+    const lines = e.target.result.split(/\r?\n/).filter(l => l.trim());
+    csvParsed = [];
+    let first = true;
+    for (const line of lines) {
+      const [name, league, rung] = line.split(',').map(s => s.trim().replace(/^"|"$/g,''));
+      if (first) { first = false; if (!name || /team/i.test(name)) continue; }
+      if (!name || !league || !rung) continue;
+      csvParsed.push({ name, league: league.toLowerCase(), rung });
+    }
+    showCSVPreview();
+  };
+  reader.readAsText(file);
+}
+
+function showCSVPreview() {
+  const preview = document.getElementById('csv-preview');
+  const label   = document.getElementById('csv-preview-label');
+  const table   = document.getElementById('csv-preview-table');
+  label.textContent = csvParsed.length + ' team' + (csvParsed.length !== 1 ? 's' : '') + ' found';
+  const LABELS = { beach: 'Summer Beach', indoor: 'Winter Indoor', grass: 'Grass League' };
+  table.innerHTML = `<table class="admin-table">
+    <thead><tr><th>Team Name</th><th>League</th><th>Rung</th></tr></thead>
+    <tbody>${csvParsed.map(r =>
+      `<tr><td>${esc(r.name)}</td><td>${esc(LABELS[r.league]||r.league)}</td><td>${esc(r.rung)}</td></tr>`
+    ).join('')}</tbody></table>`;
+  preview.style.display = 'block';
+  csvZone.style.display = 'none';
+}
+
+document.getElementById('csv-confirm').addEventListener('click', async () => {
+  const fd = new FormData();
+  fd.append('csv', csvInput.files[0] || new Blob([
+    'Team Name,League,Rung\n' + csvParsed.map(r => `${r.name},${r.league},${r.rung}`).join('\n')
+  ], { type: 'text/csv' }), 'import.csv');
+  try {
+    const res = await api('import-teams', { method: 'POST', body: fd });
+    teams = res.teams;
+    renderTeamsList();
+    cancelCSV();
+    toast(`Imported ${res.imported} teams`);
+  } catch (e) { toast(e.message, 'err'); }
+});
+
+document.getElementById('csv-cancel').addEventListener('click', cancelCSV);
+function cancelCSV() {
+  document.getElementById('csv-preview').style.display = 'none';
+  csvZone.style.display = 'block';
+  csvInput.value = '';
+  csvParsed = [];
+}
+
+// ── Score Entry ───────────────────────────────────────────────────────────────
+let rungCounter = 0;
+
+function setDefaultDate() {
+  document.getElementById('score-date').valueAsDate = new Date();
+}
+
+function getLeagueTeams(league) {
+  const rungs = teams[league] || {};
+  return Object.values(rungs).flat();
+}
+
+function buildTeamOptions(league, selected = '') {
+  const t = getLeagueTeams(league);
+  if (!t.length) return '<option value="">-- No teams registered --</option>';
+  return t.map(n => `<option value="${esc(n)}" ${n===selected?'selected':''}>${esc(n)}</option>`).join('');
+}
+
+function addRung(rungName = '') {
+  rungCounter++;
+  const id = rungCounter;
+  const league = document.getElementById('score-league').value;
+  const block = document.createElement('div');
+  block.className = 'rung-block';
+  block.id = 'rung-' + id;
+  block.innerHTML = `
+    <div class="rung-header">
+      <input type="text" placeholder="Rung Name (e.g. Rung 1)" value="${esc(rungName)}" class="rung-name-input">
+      <button class="btn btn-ghost btn-sm" onclick="addMatch(${id})">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add Match
+      </button>
+      <button class="btn btn-danger btn-sm btn-icon" onclick="document.getElementById('rung-${id}').remove()" title="Remove rung">✕</button>
+    </div>
+    <div class="match-header" style="font-size:.65rem">
+      <div class="match-col-label">Team 1</div>
+      <div></div>
+      <div class="match-col-label">Team 2</div>
+      <div class="match-col-label">S1</div>
+      <div class="match-col-label">S2</div>
+      <div class="match-col-label">P1</div>
+      <div class="match-col-label">P2</div>
+    </div>
+    <div class="matches-container" id="matches-${id}"></div>`;
+  document.getElementById('rungs-container').appendChild(block);
+  addMatch(id);
+}
+
+function addMatch(rungId, m = {}) {
+  const league = document.getElementById('score-league').value;
+  const row = document.createElement('div');
+  row.className = 'match-row';
+  row.innerHTML = `
+    <select class="team1-sel">${buildTeamOptions(league, m.team1||'')}</select>
+    <div class="match-sep">vs</div>
+    <select class="team2-sel">${buildTeamOptions(league, m.team2||'')}</select>
+    <input type="number" class="sets1-in" min="0" max="9" value="${m.team1Sets??''}" placeholder="0" title="Team 1 sets won">
+    <input type="number" class="sets2-in" min="0" max="9" value="${m.team2Sets??''}" placeholder="0" title="Team 2 sets won">
+    <input type="number" class="pts1-in"  min="0" value="${m.team1Points??''}" placeholder="0" title="Team 1 total points">
+    <input type="number" class="pts2-in"  min="0" value="${m.team2Points??''}" placeholder="0" title="Team 2 total points">
+    <button class="btn btn-danger btn-sm btn-icon" onclick="this.parentElement.remove()" title="Remove match">✕</button>`;
+  document.getElementById('matches-' + rungId).appendChild(row);
+}
+
+function onLeagueChange() {
+  // Refresh team dropdowns in all existing match rows
+  const league = document.getElementById('score-league').value;
+  document.querySelectorAll('.team1-sel, .team2-sel').forEach(sel => {
+    const cur = sel.value;
+    sel.innerHTML = buildTeamOptions(league, cur);
+  });
+}
+
+document.getElementById('add-rung-btn').addEventListener('click', () => addRung());
+document.getElementById('clear-scores-btn').addEventListener('click', () => {
+  if (!confirm('Clear the score entry form?')) return;
+  document.getElementById('rungs-container').innerHTML = '';
+  rungCounter = 0;
+  setDefaultDate();
+  addRung();
+});
+
+document.getElementById('save-night-btn').addEventListener('click', async () => {
+  const league = document.getElementById('score-league').value;
+  const date   = document.getElementById('score-date').value;
+  if (!date) { toast('Please select a date', 'err'); return; }
+
+  const rungs = [];
+  document.querySelectorAll('.rung-block').forEach(block => {
+    const name    = block.querySelector('.rung-name-input').value.trim();
+    const matches = [];
+    block.querySelectorAll('.match-row').forEach(row => {
+      const t1 = row.querySelector('.team1-sel').value;
+      const t2 = row.querySelector('.team2-sel').value;
+      const s1 = parseInt(row.querySelector('.sets1-in').value) || 0;
+      const s2 = parseInt(row.querySelector('.sets2-in').value) || 0;
+      const p1 = parseInt(row.querySelector('.pts1-in').value)  || 0;
+      const p2 = parseInt(row.querySelector('.pts2-in').value)  || 0;
+      if (t1 && t2) matches.push({ team1:t1, team2:t2, team1Sets:s1, team2Sets:s2, team1Points:p1, team2Points:p2 });
+    });
+    if (name && matches.length) rungs.push({ name, matches });
+  });
+
+  if (!rungs.length) { toast('Add at least one rung with one match', 'err'); return; }
+
+  try {
+    const res = await api('save-night', { method: 'POST', body: { league, date, rungs } });
+    toast('Match night saved — standings updated!');
+    // Clear form
+    document.getElementById('rungs-container').innerHTML = '';
+    rungCounter = 0; addRung();
+  } catch (e) { toast(e.message, 'err'); }
+});
+
+// ── History ───────────────────────────────────────────────────────────────────
+async function loadHistory() {
+  const el = document.getElementById('history-list');
+  el.innerHTML = '<div style="padding:1rem;color:var(--fg2);font-size:.85rem">Loading…</div>';
+  try {
+    const nights = await api('get-nights');
+    renderHistory(nights);
+  } catch (e) {
+    el.innerHTML = '<div class="empty-state"><div class="ei">⚠️</div><p>' + esc(e.message) + '</p></div>';
+  }
+}
+
+function renderHistory(nights) {
+  const el = document.getElementById('history-list');
+  if (!nights.length) {
+    el.innerHTML = '<div class="empty-state"><div class="ei">📋</div><p>No match nights saved yet.</p></div>';
+    return;
+  }
+  const LABELS  = { beach: 'Summer Beach', indoor: 'Winter Indoor', grass: 'Grass League' };
+  const CLASSES = { beach: 'ltag-beach', indoor: 'ltag-indoor', grass: 'ltag-grass' };
+  el.innerHTML = `<div class="admin-table-wrap">
+    <table class="admin-table">
+      <thead><tr><th>Date</th><th>League</th><th>Rungs</th><th>Matches</th><th></th></tr></thead>
+      <tbody id="history-tbody"></tbody>
+    </table>
+  </div>`;
+  const tbody = document.getElementById('history-tbody');
+  nights.forEach(n => {
+    const d = new Date(n.date + 'T00:00:00');
+    const dateStr = d.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="white-space:nowrap">${dateStr}</td>
+      <td><span class="league-pill ${CLASSES[n.league]||''}">${esc(LABELS[n.league]||n.league)}</span></td>
+      <td>${n.rungCount}</td>
+      <td>${n.matchCount}</td>
+      <td style="white-space:nowrap">
+        <button class="btn btn-ghost btn-sm" onclick="toggleDetail('${n.file}',this)">View</button>
+        <button class="btn btn-danger btn-sm" onclick="deleteNight('${n.file}',this)" style="margin-left:.4rem">Delete</button>
+      </td>`;
+    tbody.appendChild(tr);
+    // Detail row
+    const dr = document.createElement('tr');
+    dr.id = 'detail-row-' + n.file.replace(/\W/g,'_');
+    dr.innerHTML = `<td colspan="5" style="padding:0">
+      <div class="night-detail" id="detail-${n.file.replace(/\W/g,'_')}"></div>
+    </td>`;
+    tbody.appendChild(dr);
+  });
+}
+
+async function toggleDetail(file, btn) {
+  const key = file.replace(/\W/g,'_');
+  const box = document.getElementById('detail-' + key);
+  if (box.classList.contains('open')) {
+    box.classList.remove('open'); btn.textContent = 'View'; return;
+  }
+  btn.textContent = 'Loading…';
+  try {
+    const night = await api('get-night', { method: 'GET' });
+    // Re-fetch with file param
+    const res = await fetch('/api/league.php?action=get-night&file=' + encodeURIComponent(file), { credentials:'include' });
+    const data = await res.json();
+    let html = '';
+    for (const rung of data.rungs || []) {
+      html += `<div class="night-rung-name">${esc(rung.name)}</div>`;
+      for (const m of rung.matches || []) {
+        html += `<div class="night-match-line">
+          <span class="night-match-score">${esc(m.team1)} ${m.team1Sets}–${m.team2Sets} ${esc(m.team2)}</span>
+          <span style="color:var(--fg3);font-size:.76rem"> &nbsp;(${m.team1Points}–${m.team2Points} pts)</span>
+        </div>`;
+      }
+    }
+    box.innerHTML = html || '<em style="color:var(--fg3);font-size:.82rem">No match data</em>';
+    box.classList.add('open');
+    btn.textContent = 'Hide';
+  } catch (e) { btn.textContent = 'View'; toast(e.message, 'err'); }
+}
+
+async function deleteNight(file, btn) {
+  if (!confirm('Delete this match night? This cannot be undone.')) return;
+  btn.disabled = true;
+  try {
+    await api('delete-night', { method: 'POST', body: { file } });
+    toast('Match night deleted');
+    loadHistory();
+  } catch (e) { toast(e.message, 'err'); btn.disabled = false; }
+}
+
+document.getElementById('refresh-history-btn').addEventListener('click', loadHistory);
+
+// ── Utils ─────────────────────────────────────────────────────────────────────
+function esc(s) {
+  return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+initAuth();
+
+})();
+</script>
+</body>
+</html>

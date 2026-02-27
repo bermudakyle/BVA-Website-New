@@ -1,5 +1,6 @@
 node_modules/
 temporary screenshots/
+api/pin.hash
 assets/images/**
 # Allow CMS-uploaded images to be tracked and deployed
 !assets/images/uploads/

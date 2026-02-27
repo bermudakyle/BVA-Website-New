@@ -1,0 +1,4 @@
+# Deny direct HTTP access to the PIN hash file
+<Files "pin.hash">
+  Require all denied
+</Files>

@@ -34,10 +34,14 @@ jobs:
           node -e "
             const fs = require('fs');
             const dir = 'content/league-data';
-            if (!fs.existsSync(dir)) { console.log('No league-data dir, skipping'); process.exit(0); }
+            if (!fs.existsSync(dir)) { process.exit(0); }
             const files = fs.readdirSync(dir)
-              .filter(f => f.endsWith('.json') && f !== 'index.json')
+              .filter(f => f.endsWith('.json') && f !== 'index.json' && f !== 'teams.json')
               .sort();
+            if (files.length === 0) {
+              console.log('No league data files in repo — skipping manifest (server manages this)');
+              process.exit(0);
+            }
             fs.writeFileSync(dir + '/index.json', JSON.stringify(files, null, 2));
             console.log('Generated content/league-data/index.json with', files.length, 'files');
           "

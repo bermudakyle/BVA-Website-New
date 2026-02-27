@@ -425,7 +425,7 @@ a { color: inherit; }
 .home-programs-mosaic {
   display: grid;
   grid-template-columns: 1fr 1.6fr;
-  grid-template-rows: 340px 340px;
+  grid-template-rows: 680px;
   gap: var(--gap);
   border-radius: 14px; overflow: hidden;
 }
