@@ -1,12 +1,27 @@
 {
-  "missionPara1": "The Bermuda Volleyball Association has been promoting and developing volleyball across the island for more than 40 years. As the national governing body for the sport, BVA is responsible for all forms of volleyball in Bermuda — beach, indoor, and grass.",
+  "missionPara1": "The Bermuda Volleyball Association has been promoting and developing volleyball across the island for more than 40 years. As the national governing body for the sport, BVA is responsible for all forms of volleyball in Bermuda — beach, indoor.",
   "missionPara2": "From junior development programs to international competition at the highest levels, BVA is committed to providing every Bermudian with the opportunity to play, develop, and compete in the sport of volleyball.",
   "stats": [
-    {"num": "40+", "label": "Years Established"},
-    {"num": "3",   "label": "Leagues"},
-    {"num": "2",   "label": "National Teams"},
-    {"num": "6+",  "label": "Programs"},
-    {"num": "3",   "label": "International Federations"}
+    {
+      "num": "40+",
+      "label": "Years Established"
+    },
+    {
+      "num": "3",
+      "label": "Leagues"
+    },
+    {
+      "num": "2",
+      "label": "National Teams"
+    },
+    {
+      "num": "6+",
+      "label": "Programs"
+    },
+    {
+      "num": "3",
+      "label": "International Federations"
+    }
   ],
   "pillars": [
     {

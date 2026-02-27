@@ -310,12 +310,12 @@
 
   /* ── 2. Section order ───────────────────────────────── */
   if (config.sectionOrder && config.sectionOrder.length) {
+    const refNode = document.querySelector('body > footer');
     config.sectionOrder.forEach(({ id }) => {
       const section = document.querySelector('[data-section-id="' + id + '"]');
-      if (section && section.parentNode) {
-        /* appendChild moves the node to end of parent;
-           iterating in desired order produces correct final order */
-        section.parentNode.appendChild(section);
+      if (section && section.parentNode && refNode) {
+        /* insertBefore keeps sections above the footer regardless of order */
+        section.parentNode.insertBefore(section, refNode);
       }
     });
   }

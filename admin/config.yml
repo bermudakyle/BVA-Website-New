@@ -12,7 +12,7 @@ backend:
   base_url: https://sveltia-cms-auth.bermuda-kyle.workers.dev/   # Sveltia OAuth proxy (production only)
 
 # Uncomment the line below for local development (disables OAuth, saves to local files)
-local_backend: true
+# local_backend: true
 
 # ── Media ─────────────────────────────────────────────────────────────────────
 media_folder: assets/images/uploads

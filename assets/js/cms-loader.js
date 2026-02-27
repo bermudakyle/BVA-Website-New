@@ -105,6 +105,25 @@ async function loadPageContent(pageId) {
       container.appendChild(clone);
     });
   });
+
+  /* ── Re-activate .reveal elements added by CMS rendering ── */
+  /* main.js's IntersectionObserver only covers elements present at
+     DOMContentLoaded. Template-cloned elements inserted above start
+     with opacity:0 and never receive .in — make them visible now.  */
+  const newReveal = document.querySelectorAll('.reveal:not(.in)');
+  if (newReveal.length) {
+    if (window.IntersectionObserver) {
+      const io = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+      newReveal.forEach(el => io.observe(el));
+    } else {
+      newReveal.forEach(el => el.classList.add('in'));
+    }
+    setTimeout(() => newReveal.forEach(el => el.classList.add('in')), 500);
+  }
 }
 
 /* ── Deep property getter: "a.b.c" from nested object ─── */
