@@ -1,0 +1,5 @@
+# Serve YAML config file as plain text so Sveltia CMS can fetch it
+AddType text/plain .yml .yaml
+
+# Ensure directory browsing is off (index.html will be served)
+Options -Indexes

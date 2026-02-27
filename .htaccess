@@ -3,7 +3,7 @@
 
 # ── MIME Types ────────────────────────────────────────────────────────────────
 # Required so JavaScript fetch() can read Markdown files as text
-AddType text/plain .md
+AddType text/plain .md .yml .yaml
 
 # ── Security: disable directory browsing ──────────────────────────────────────
 Options -Indexes
@@ -31,6 +31,6 @@ Options -Indexes
 </IfModule>
 
 # ── CORS headers for Markdown/JSON content fetched by JavaScript ─────────────
-<FilesMatch "\.(md|json)$">
+<FilesMatch "\.(md|json|yml|yaml)$">
   Header set Access-Control-Allow-Origin "*"
 </FilesMatch>
